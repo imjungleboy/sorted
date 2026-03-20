@@ -5,13 +5,33 @@
   --color-teal: #3A9E8F;
   --color-forest: #2D6B5E;
   --color-charcoal: #2C3E50;
-  --color-mint: #A8E6CF;
+  --color-mint: #D4EDDA;
+  --color-amber: #E8913A;
+  --color-gold: #F5C542;
+  --color-cream: #F5D5A8;
+  --color-coral: #E05252;
+  --color-smoke: #8C9DAF;
   --font-sans: var(--font-nunito);
   --font-body: var(--font-inter);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background: var(--color-cloud);
   color: var(--color-charcoal);
-  font-family: var(--font-body), Arial, Helvetica, sans-serif;
+  font-family: var(--font-body), system-ui, sans-serif;
+}
+
+/* Fade-in animation */
+.fade-in-section {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+.fade-in-section.is-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
