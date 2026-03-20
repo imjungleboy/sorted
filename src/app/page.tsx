@@ -1,27 +1,28 @@
 import Image from "next/image";
 import FadeIn from "./components/FadeIn";
 import PhoneCarousel from "./components/PhoneCarousel";
+import ScannerChecklist from "./components/ScannerChecklist";
 
 const features = [
   {
     image: "/images/hedgie-receipt.png",
-    title: "Snap it. Sorted.",
+    title: "1. Snap your receipts",
     description:
-      "Point your camera at any receipt. Hedgie reads it in 3 seconds \u2014 merchant, amount, category \u2014 all extracted by AI.",
+      "Point your camera at any receipt. AI extracts the merchant, amount, and category in 3 seconds. It even calculates your tax saving on every expense.",
     bg: "bg-[#e8f5e9]",
   },
   {
     image: "/images/hedgie-invoice.png",
-    title: "Invoice in 15 seconds",
+    title: "2. Send invoices instantly",
     description:
-      "Type what you did. Hedgie writes the invoice. Send it by email or WhatsApp. Track who\u2019s paid.",
+      "Type what you did and how much. Sorted creates a professional invoice, emails it to your client, and tracks whether they\u2019ve paid.",
     bg: "bg-[#fff8e1]",
   },
   {
     image: "/images/hedgie-thinking.png",
-    title: "Know what you owe",
+    title: "3. Know what you owe",
     description:
-      "Your tax estimate updates in real-time. Income Tax, National Insurance, Student Loan \u2014 all calculated live. No more January surprises.",
+      "Your tax bill updates in real-time. Income Tax, National Insurance, Student Loan \u2014 always accurate, never a January surprise.",
     bg: "bg-[#e0f2f1]",
   },
 ];
@@ -39,7 +40,7 @@ const pricingFeatures = [
 const testimonials = [
   {
     quote:
-      "I used to spend my Sundays doing admin. Now I scan receipts while I wait for the kettle. Sorted.",
+      "I was dreading MTD. Downloaded Sorted, scanned 3 months of receipts in 20 minutes, and now I actually know what I owe. Game changer.",
     name: "Sarah",
     role: "freelance designer",
     initial: "S",
@@ -47,7 +48,7 @@ const testimonials = [
   },
   {
     quote:
-      "Finally an app that doesn\u2019t make me feel stupid about tax.",
+      "I tried Xero. I tried QuickBooks. I tried a spreadsheet. I tried ignoring it. Sorted is the first thing that actually stuck.",
     name: "Marcus",
     role: "personal trainer",
     initial: "M",
@@ -55,12 +56,22 @@ const testimonials = [
   },
   {
     quote:
-      "Hedgie reminds me about deadlines better than my accountant does.",
+      "Hedgie reminds me about deadlines and I\u2019ve never once wanted to throw my phone. Can\u2019t say that about my accountant\u2019s emails.",
     name: "Priya",
     role: "Deliveroo courier",
     initial: "P",
     color: "bg-coral/20 text-coral",
   },
+];
+
+const comparisonRows = [
+  { label: "Monthly price", others: "£12\u201330", sorted: "£4.99" },
+  { label: "Setup time", others: "30+ minutes", sorted: "Under 5 minutes" },
+  { label: "Receipt scanning", others: "Manual entry or paid add-on", sorted: "AI vision \u2014 3 second scan" },
+  { label: "Learning curve", others: "Needs training", sorted: "If you can take a photo, you\u2019re sorted" },
+  { label: "Built for", others: "Businesses & accountants", sorted: "Self-employed humans" },
+  { label: "MTD compliant", others: "Yes", sorted: "Yes" },
+  { label: "Friendly hedgehog", others: "No", sorted: "Obviously", highlight: true },
 ];
 
 function AppleIcon({ className = "w-5 h-5" }: { className?: string }) {
@@ -122,38 +133,56 @@ function CheckIcon() {
   );
 }
 
+function StopwatchIcon() {
+  return (
+    <svg className="w-5 h-5 text-white/80 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+      <circle cx="12" cy="13" r="8" />
+      <path strokeLinecap="round" d="M12 9v4l2.5 2.5M10 2h4M12 2v3" />
+    </svg>
+  );
+}
+
 export default function Home() {
   return (
     <>
       {/* ─── HERO ─── */}
       <section className="min-h-[90vh] flex items-center bg-cloud relative overflow-hidden">
-        {/* Subtle decorative blobs */}
         <div className="absolute top-20 -right-32 w-96 h-96 rounded-full bg-mint/40 blur-3xl" />
         <div className="absolute -bottom-20 -left-20 w-72 h-72 rounded-full bg-gold/10 blur-3xl" />
 
         <div className="max-w-6xl mx-auto px-5 py-16 flex flex-col-reverse md:flex-row items-center gap-10 md:gap-16 relative z-10">
-          {/* Text */}
           <div className="flex-[3] text-center md:text-left">
-            <span className="inline-block mb-4 text-xs font-semibold tracking-wide px-3.5 py-1.5 rounded-full bg-coral/10 text-coral border border-coral/20">
-              Making Tax Digital starts April 2026
+            <span className="inline-flex items-center gap-2 mb-4 text-xs font-semibold tracking-wide px-3.5 py-1.5 rounded-full bg-coral/10 text-coral border border-coral/20">
+              <span className="w-2 h-2 rounded-full bg-coral animate-pulse-dot" />
+              New HMRC law starts April 2026
             </span>
             <h1 className="font-[family-name:var(--font-nunito)] text-5xl md:text-7xl font-bold text-forest leading-[1.1] tracking-tight">
-              get your taxes
-              <br />
-              sorted.
+              HMRC is going digital. Are you ready?
             </h1>
-            <p className="mt-5 text-lg md:text-xl text-charcoal/70 leading-relaxed max-w-xl">
-              The anti-accounting app for UK self-employed people. Scan
-              receipts. Send invoices. Know what you owe.
+            <p className="mt-5 text-lg md:text-xl text-charcoal/70 leading-relaxed max-w-2xl">
+              From April 2026, every self-employed person in the UK must keep
+              digital tax records. Sorted uses AI to scan your receipts in 3
+              seconds, send professional invoices, and calculate your tax bill
+              in real-time. No accounting knowledge needed.
             </p>
-            <div className="mt-8">
-              <DownloadButtons />
+            <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <a
+                href="#download"
+                className="inline-flex items-center justify-center cursor-pointer rounded-2xl bg-amber px-7 py-3.5 text-base font-bold text-white hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-amber/25"
+              >
+                Get Sorted — it&apos;s free to start
+              </a>
+              <a
+                href="#features"
+                className="inline-flex items-center justify-center cursor-pointer rounded-2xl border-2 border-teal text-teal px-7 py-3.5 text-base font-bold hover:bg-teal/5 hover:scale-[1.02] active:scale-[0.98] transition-all"
+              >
+                See how it works
+              </a>
             </div>
             <p className="mt-3 text-sm text-smoke">
-              Free 7-day trial &bull; No card required
+              7-day free trial &bull; No card required &bull; Cancel anytime
             </p>
           </div>
-          {/* Hero image — soft background circle to catch PNG transparency */}
           <div className="flex-[2] flex justify-center">
             <div className="relative">
               <div className="absolute inset-0 bg-mint/60 rounded-[2rem] -rotate-3 scale-105" />
@@ -170,15 +199,53 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── THE PROBLEM ─── */}
+      <section className="bg-white py-20 md:py-28">
+        <div className="max-w-3xl mx-auto px-5 text-center">
+          <FadeIn>
+            <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest">
+              4.4 million people aren&apos;t ready
+            </h2>
+          </FadeIn>
+
+          <FadeIn className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <div>
+              <p className="font-mono text-5xl font-bold text-coral">4.4m</p>
+              <p className="mt-2 text-charcoal/70">self-employed people affected</p>
+            </div>
+            <div>
+              <p className="font-mono text-5xl font-bold text-coral">67%</p>
+              <p className="mt-2 text-charcoal/70">still using spreadsheets or shoeboxes</p>
+            </div>
+            <div>
+              <p className="font-mono text-5xl font-bold text-coral">£1,000+</p>
+              <p className="mt-2 text-charcoal/70">penalty for non-compliance</p>
+            </div>
+          </FadeIn>
+
+          <FadeIn className="mt-10">
+            <p className="text-lg text-charcoal/70 leading-relaxed">
+              Making Tax Digital (MTD) means HMRC will require quarterly digital
+              submissions from every self-employed person earning over £50k from
+              April 2026 — dropping to £20k by 2028. The old way of doing things
+              is officially over.
+            </p>
+            <p className="mt-6 text-forest font-medium text-lg">
+              Sorted gets you compliant in under 5 minutes.
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* ─── FEATURES ─── */}
       <section id="features" className="bg-mint py-20 md:py-28">
         <div className="max-w-6xl mx-auto px-5">
           <FadeIn className="text-center mb-14">
             <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest">
-              Hedgie handles the boring stuff
+              Three taps. Taxes sorted.
             </h2>
             <p className="mt-3 text-smoke text-lg">
-              So you can get back to actual work.
+              No jargon. No spreadsheets. No accountant required.
             </p>
           </FadeIn>
 
@@ -186,7 +253,6 @@ export default function Home() {
             {features.map((f) => (
               <FadeIn key={f.title}>
                 <div className="bg-white rounded-2xl shadow-sm hover:shadow-md transition-shadow h-full flex flex-col overflow-hidden">
-                  {/* Image container with solid background — no transparency leaks */}
                   <div className={`${f.bg} flex items-center justify-center p-6`}>
                     <Image
                       src={f.image}
@@ -212,6 +278,88 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ─── AI SCANNER ─── */}
+      <section className="bg-forest py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute top-0 right-0 w-96 h-96 rounded-full bg-teal/10 blur-3xl" />
+        <div className="max-w-6xl mx-auto px-5 flex flex-col md:flex-row items-center gap-12 md:gap-16 relative z-10">
+          {/* Text */}
+          <div className="flex-[55] text-center md:text-left">
+            <span className="text-gold uppercase text-xs tracking-widest font-bold">
+              Powered by AI
+            </span>
+            <h2 className="mt-3 font-[family-name:var(--font-nunito)] text-4xl md:text-5xl font-bold text-white leading-tight">
+              Point. Snap. Sorted.
+            </h2>
+            <div className="mt-6 space-y-4 text-cream text-lg leading-relaxed">
+              <p>
+                Most expense apps make you type everything in manually. Sorted
+                uses AI vision to read your receipts instantly.
+              </p>
+              <p>
+                Snap a photo of any receipt — crumpled, faded, coffee-stained —
+                and Sorted extracts:
+              </p>
+            </div>
+
+            <ScannerChecklist />
+
+            <p className="text-cream text-lg leading-relaxed">
+              All in under 3 seconds. No typing. No manual entry. No excuses
+              for losing receipts ever again.
+            </p>
+
+            <div className="mt-8 inline-flex items-center gap-3 bg-teal rounded-xl px-5 py-3">
+              <StopwatchIcon />
+              <span className="text-white font-medium">
+                Average time to log an expense: <strong>3 seconds</strong>
+              </span>
+            </div>
+          </div>
+
+          {/* Visual */}
+          <div className="flex-[45] flex justify-center">
+            <div className="relative w-full max-w-xs">
+              {/* Receipt card */}
+              <div className="bg-white rounded-xl shadow-2xl p-6 -rotate-3 relative">
+                {/* Scanning line */}
+                <div className="absolute inset-x-0 top-0 bottom-0 overflow-hidden rounded-xl pointer-events-none">
+                  <div className="absolute left-0 right-0 h-0.5 bg-gold/80 animate-scan-line" />
+                </div>
+                <p className="text-charcoal font-bold text-lg">Costa Coffee</p>
+                <p className="text-smoke text-sm mt-1">20 Mar 2026</p>
+                <div className="mt-4 space-y-2 text-charcoal text-sm">
+                  <div className="flex justify-between">
+                    <span>Flat White</span>
+                    <span>£3.40</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Blueberry Muffin</span>
+                    <span>£2.85</span>
+                  </div>
+                </div>
+                <div className="mt-4 pt-3 border-t-2 border-dashed border-smoke/30 flex justify-between items-baseline">
+                  <span className="text-smoke text-sm font-medium">Total</span>
+                  <span className="text-forest font-bold text-xl">£6.25</span>
+                </div>
+              </div>
+
+              {/* Result card */}
+              <div className="bg-teal rounded-xl shadow-2xl p-5 rotate-2 -mt-4 ml-8 relative z-10">
+                <p className="text-white font-bold flex items-center gap-2">
+                  <span className="text-gold">✓</span> Expense logged
+                </p>
+                <p className="text-white/80 text-sm mt-1">
+                  Costa Coffee · £6.25 · Food &amp; Drink
+                </p>
+                <p className="text-gold font-mono font-bold mt-2">
+                  Tax saved: £1.25
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── APP PREVIEW ─── */}
       <section className="bg-white py-12 md:py-20">
         <div className="max-w-6xl mx-auto px-5">
@@ -229,44 +377,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ─── THE JANUARY PROBLEM ─── */}
+      {/* ─── COMPETITOR COMPARISON ─── */}
       <section className="bg-cloud py-20 md:py-28">
-        <div className="max-w-6xl mx-auto px-5 flex flex-col-reverse md:flex-row items-center gap-12">
-          <FadeIn className="flex-1">
-            <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest leading-tight">
-              HMRC is changing the rules.
+        <div className="max-w-6xl mx-auto px-5">
+          <FadeIn className="text-center mb-12">
+            <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest">
+              Built for you, not your accountant
             </h2>
-            <div className="mt-5 space-y-4 text-charcoal/70 leading-relaxed">
-              <p>
-                From April 2026, self-employed people earning over £50,000
-                must keep digital records and submit quarterly updates to
-                HMRC. By 2028, that drops to £20,000.
-              </p>
-              <p>
-                Most people still use spreadsheets and shoeboxes. That&apos;s
-                about to become a problem.
-              </p>
-              <p>
-                Sorted keeps you compliant — without the complexity. Everything
-                HMRC needs, nothing you don&apos;t.
-              </p>
-            </div>
-            <a
-              href="#download"
-              className="mt-8 inline-flex items-center cursor-pointer rounded-2xl bg-amber px-7 py-3.5 text-base font-bold text-white hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-amber/25"
-            >
-              Get Sorted before April
-            </a>
+            <p className="mt-3 text-smoke text-lg max-w-2xl mx-auto">
+              Most tax apps are designed for businesses with staff. You&apos;re not
+              a business. You&apos;re a person who needs to stay legal.
+            </p>
           </FadeIn>
-          <FadeIn className="flex-1 flex justify-center">
-            <Image
-              src="/images/hedgie-worried-full.png"
-              alt="Hedgie looking anxious about HMRC deadlines"
-              width={2752}
-              height={1536}
-              loading="lazy"
-              className="w-64 md:w-[400px]"
-            />
+
+          <FadeIn>
+            <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-md overflow-hidden">
+              {/* Header */}
+              <div className="grid grid-cols-[1fr_1fr_1fr] text-sm font-bold">
+                <div className="p-4" />
+                <div className="p-4 text-smoke text-center">Others</div>
+                <div className="p-4 text-forest text-center">Sorted</div>
+              </div>
+              {/* Rows */}
+              {comparisonRows.map((row, i) => (
+                <div
+                  key={row.label}
+                  className={`grid grid-cols-[1fr_1fr_1fr] text-sm border-t border-forest/5 ${
+                    row.highlight ? "bg-cream/40" : i % 2 === 0 ? "bg-cloud/40" : ""
+                  }`}
+                >
+                  <div className="p-4 text-charcoal font-medium">{row.label}</div>
+                  <div className="p-4 text-smoke text-center">{row.others}</div>
+                  <div className="p-4 text-teal font-bold text-center">{row.sorted}</div>
+                </div>
+              ))}
+            </div>
+            <p className="mt-6 text-center text-smoke italic">
+              We&apos;re not replacing your accountant. We&apos;re replacing the shoebox.
+            </p>
           </FadeIn>
         </div>
       </section>
@@ -278,13 +426,15 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5 relative z-10">
           <FadeIn className="text-center mb-12">
             <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest">
-              One price. Everything included.
+              Less than a coffee a week
             </h2>
+            <p className="mt-3 text-smoke text-lg">
+              Everything you need to stay HMRC-compliant. Nothing you don&apos;t.
+            </p>
           </FadeIn>
 
           <FadeIn>
             <div className="max-w-md mx-auto bg-white border-2 border-teal rounded-2xl shadow-xl p-8 text-center relative">
-              {/* Popular badge */}
               <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                 <span className="bg-teal text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md">
                   Most Popular
@@ -328,6 +478,9 @@ export default function Home() {
             or save 33% with annual billing —{" "}
             <span className="font-semibold">£39.99/year</span>
           </p>
+          <p className="mt-2 text-center text-sm text-forest font-medium">
+            That&apos;s 90% cheaper than QuickBooks Self-Employed
+          </p>
         </div>
       </section>
 
@@ -336,7 +489,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto px-5">
           <FadeIn className="text-center mb-14">
             <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest">
-              Built for people who hate accounting
+              Built for people who&apos;d rather be doing literally anything else
             </h2>
           </FadeIn>
 
@@ -344,7 +497,6 @@ export default function Home() {
             {testimonials.map((t) => (
               <FadeIn key={t.name}>
                 <div className="bg-white rounded-2xl p-6 shadow-sm h-full flex flex-col">
-                  {/* Stars */}
                   <div className="flex gap-0.5 mb-3">
                     {[...Array(5)].map((_, i) => (
                       <svg key={i} className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
@@ -380,16 +532,12 @@ export default function Home() {
                 className="relative mx-auto max-h-[120px] w-auto"
               />
             </div>
-            <p className="mt-4 font-[family-name:var(--font-nunito)] text-xl font-bold text-forest">
-              Join Hedgie. Get sorted.
-            </p>
           </FadeIn>
         </div>
       </section>
 
       {/* ─── FINAL CTA ─── */}
       <section id="download" className="bg-forest py-20 md:py-28 relative overflow-hidden">
-        {/* Decorative elements */}
         <div className="absolute top-10 right-10 w-64 h-64 rounded-full bg-teal/20 blur-3xl" />
         <div className="absolute -bottom-10 -left-10 w-48 h-48 rounded-full bg-gold/10 blur-2xl" />
 
@@ -398,9 +546,19 @@ export default function Home() {
             <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-5xl font-bold text-white leading-tight">
               Your taxes won&apos;t sort themselves.
             </h2>
-            <p className="mt-3 text-xl text-cream/90">But Hedgie will.</p>
+            <p className="mt-3 text-xl text-cream/90">
+              But it only takes 5 minutes to get started.
+            </p>
             <div className="mt-8">
-              <DownloadButtons />
+              <a
+                href="#"
+                className="inline-flex items-center justify-center cursor-pointer rounded-2xl bg-amber px-8 py-4 text-lg font-bold text-white hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] transition-all shadow-lg shadow-amber/25"
+              >
+                Get Sorted — Free for 7 days
+              </a>
+              <p className="mt-3 text-sm text-smoke">
+                No card required. Cancel anytime.
+              </p>
             </div>
           </div>
           <div className="flex-shrink-0">
