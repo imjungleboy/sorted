@@ -1,5 +1,6 @@
 import Image from "next/image";
 import FadeIn from "./components/FadeIn";
+import PhoneCarousel from "./components/PhoneCarousel";
 
 const features = [
   {
@@ -172,6 +173,23 @@ export default function Home() {
                 </FadeIn>
               ))}
             </div>
+          </div>
+        </section>
+
+        {/* ─── APP PREVIEW ─── */}
+        <section className="bg-white py-12 md:py-20">
+          <div className="max-w-6xl mx-auto px-5">
+            <FadeIn className="text-center mb-12">
+              <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest">
+                See it in action
+              </h2>
+              <p className="mt-3 text-smoke text-lg">
+                Real app. Real simple. No accounting degree required.
+              </p>
+            </FadeIn>
+            <FadeIn>
+              <PhoneCarousel />
+            </FadeIn>
           </div>
         </section>
 
