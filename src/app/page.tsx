@@ -184,17 +184,14 @@ export default function Home() {
             </p>
           </div>
           <div className="flex-[2] flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-mint/60 rounded-[2rem] -rotate-3 scale-105" />
-              <Image
-                src="/images/hedgie-desk.png"
-                alt="Hedgie the hedgehog mascot sitting at a desk with tablet, coins, and documents"
-                width={480}
-                height={332}
-                priority
-                className="relative w-64 md:w-[420px] rounded-2xl"
-              />
-            </div>
+            <Image
+              src="/images/hedgie-hero.png"
+              alt="Hedgie the hedgehog mascot holding a phone with receipts and documents"
+              width={1496}
+              height={1016}
+              priority
+              className="w-64 md:w-[420px]"
+            />
           </div>
         </div>
       </section>

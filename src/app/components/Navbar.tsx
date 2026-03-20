@@ -21,9 +21,9 @@ export default function Navbar() {
           <Image
             src="/images/hedgie-icon.png"
             alt="Sorted mascot"
-            width={72}
-            height={72}
-            className="rounded-full w-[72px] h-[72px]"
+            width={2752}
+            height={1536}
+            className="rounded-full w-[52px] h-[52px] object-cover object-center"
           />
           <span className="font-[family-name:var(--font-nunito)] text-xl font-extrabold text-forest">
             Sorted
