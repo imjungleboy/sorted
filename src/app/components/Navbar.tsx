@@ -36,14 +36,14 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-charcoal hover:text-teal transition-colors"
+              className="text-sm font-medium text-charcoal cursor-pointer hover:text-teal transition-colors"
             >
               {l.label}
             </a>
           ))}
           <a
             href="#download"
-            className="inline-flex items-center rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-white hover:bg-amber/90 hover:scale-[1.02] transition-all"
+            className="inline-flex items-center cursor-pointer rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-amber/25 hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             Get Sorted
           </a>
