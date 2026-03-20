@@ -15,15 +15,15 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 bg-cloud/90 backdrop-blur-md border-b border-forest/10">
-      <div className="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-5 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5">
           <Image
             src="/images/hedgie-icon.png"
             alt="Sorted mascot"
-            width={36}
-            height={36}
-            className="rounded-full"
+            width={72}
+            height={72}
+            className="rounded-full w-[72px] h-[72px]"
           />
           <span className="font-[family-name:var(--font-nunito)] text-xl font-extrabold text-forest">
             Sorted

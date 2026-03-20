@@ -259,17 +259,14 @@ export default function Home() {
             </a>
           </FadeIn>
           <FadeIn className="flex-1 flex justify-center">
-            <div className="relative">
-              <div className="absolute inset-0 bg-coral/10 rounded-[2rem] rotate-2 scale-110" />
-              <Image
-                src="/images/hedgie-worried.png"
-                alt="Hedgie looking anxious about HMRC deadlines"
-                width={450}
-                height={240}
-                loading="lazy"
-                className="relative w-56 md:w-[340px] rounded-2xl"
-              />
-            </div>
+            <Image
+              src="/images/hedgie-worried-full.png"
+              alt="Hedgie looking anxious about HMRC deadlines"
+              width={2752}
+              height={1536}
+              loading="lazy"
+              className="w-64 md:w-[400px]"
+            />
           </FadeIn>
         </div>
       </section>
