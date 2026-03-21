@@ -1,56 +1,59 @@
+import Image from "next/image";
+
 export const metadata = {
   title: "Support — Sorted",
 };
 
 const faqs = [
   {
-    question: "Is Sorted a replacement for an accountant?",
+    question: "How do I scan a receipt?",
     answer:
-      "No. Sorted is a tracking and estimation tool to help you stay organised throughout the tax year. For complex tax situations, Self Assessment filing, or professional advice, we recommend consulting a qualified accountant.",
+      "Tap Scan on the home screen, point your camera at the receipt, and Hedgie reads it in 3 seconds — merchant, amount, category, all done.",
   },
   {
-    question: "How does the receipt scanner work?",
+    question: "How do I create an invoice?",
     answer:
-      "Point your camera at any receipt and Sorted uses AI to read it automatically. It extracts the merchant name, date, total amount, and VAT — then suggests the right expense category. You can review and edit before saving.",
+      "Tap New Invoice, describe what you did and how much to charge. Hedgie writes a professional invoice for you — just hit send.",
+  },
+  {
+    question: "How accurate is the tax estimate?",
+    answer:
+      "Sorted uses current HMRC tax bands and updates your estimate in real-time. It\u2019s an estimate \u2014 for formal advice, consult a qualified accountant.",
   },
   {
     question: "Can I cancel anytime?",
     answer:
-      "Yes. You can cancel your subscription at any time through the Apple App Store or Google Play Store settings. You'll keep access until the end of your current billing period.",
+      "Yes. One tap in Settings > Subscription. No cancellation fees, no phone calls needed. You keep access until the end of your billing period.",
   },
   {
     question: "Is my data safe?",
     answer:
-      "Yes. Your data is encrypted in transit and at rest, stored on EU-based servers with row-level security so only you can access your data. You can export or delete all your data at any time from the Settings screen.",
+      "All data is encrypted in transit and at rest, stored securely on EU-based servers with row-level security. We never share your financial data with anyone.",
   },
   {
-    question: "Is Sorted MTD compatible?",
+    question: "How do I export my data for my accountant?",
     answer:
-      "We're currently working on HMRC Making Tax Digital integration — it's coming soon. For now, Sorted helps you track everything so you're ready when it's time to file.",
+      "Go to Settings > Export Data to generate a CSV for the current tax year. You can share it directly with your accountant.",
   },
 ];
 
 export default function SupportPage() {
   return (
-    <div className="max-w-3xl mx-auto px-6 py-12">
-      <h1 className="font-[family-name:var(--font-nunito)] text-3xl font-bold text-forest mb-2">
-        Support
+    <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
+      {/* Header */}
+      <h1 className="font-[family-name:var(--font-nunito)] text-4xl md:text-5xl font-bold text-forest mb-2">
+        Need help?
       </h1>
-      <p className="text-charcoal/70 mb-8">
-        Need help? Email us at{" "}
-        <a
-          href="mailto:support@mysorted.app"
-          className="text-teal font-medium hover:underline"
-        >
-          support@mysorted.app
-        </a>
+      <p className="text-lg text-smoke mb-12">
+        Hedgie&apos;s here for you.
       </p>
 
-      <section>
+      {/* Common Questions */}
+      <section className="mb-14">
         <h2 className="font-[family-name:var(--font-nunito)] text-2xl font-bold text-forest mb-6">
-          Frequently Asked Questions
+          Common Questions
         </h2>
-        <div className="space-y-4">
+        <div className="space-y-3">
           {faqs.map((faq) => (
             <details
               key={faq.question}
@@ -75,6 +78,46 @@ export default function SupportPage() {
           ))}
         </div>
       </section>
+
+      {/* Contact Us */}
+      <section className="mb-14">
+        <h2 className="font-[family-name:var(--font-nunito)] text-2xl font-bold text-forest mb-3">
+          Contact Us
+        </h2>
+        <p className="text-charcoal/70 leading-relaxed">
+          Email us at{" "}
+          <a
+            href="mailto:support@mysorted.app"
+            className="text-teal font-medium hover:underline cursor-pointer"
+          >
+            support@mysorted.app
+          </a>{" "}
+          and Hedgie will get back to you within 24 hours.
+        </p>
+      </section>
+
+      {/* Found a Bug? */}
+      <section className="mb-14">
+        <h2 className="font-[family-name:var(--font-nunito)] text-2xl font-bold text-forest mb-3">
+          Found a Bug?
+        </h2>
+        <p className="text-charcoal/70 leading-relaxed">
+          You can report bugs directly from the app (Settings &gt; Help &amp;
+          Feedback) or email us. Include what you were doing when it happened
+          and a screenshot if possible.
+        </p>
+      </section>
+
+      {/* Hedgie waving */}
+      <div className="flex justify-center mt-8">
+        <Image
+          src="/images/hedgie-waving.png"
+          alt="Hedgie waving"
+          width={220}
+          height={123}
+          className="w-40 md:w-[200px]"
+        />
+      </div>
     </div>
   );
 }
