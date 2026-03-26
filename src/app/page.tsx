@@ -180,7 +180,7 @@ export default function Home() {
               </a>
             </div>
             <p className="mt-3 text-sm text-smoke">
-              7-day free trial &bull; No card required &bull; Cancel anytime
+              30-day free trial &bull; No card required &bull; Cancel anytime
             </p>
           </div>
           <div className="flex-[2] flex justify-center">
@@ -466,14 +466,14 @@ export default function Home() {
                 Start free trial
               </a>
               <p className="mt-3 text-xs text-smoke">
-                7 days free. Cancel anytime. No card upfront.
+                30 days free. Cancel anytime. No card upfront.
               </p>
             </div>
           </FadeIn>
 
           <p className="mt-6 text-center text-sm text-smoke">
-            or save 33% with annual billing —{" "}
-            <span className="font-semibold">£39.99/year</span>
+            or save 25% with annual billing —{" "}
+            <span className="font-semibold">£44.99/year</span>
           </p>
           <p className="mt-2 text-center text-sm text-forest font-medium">
             That&apos;s 90% cheaper than QuickBooks Self-Employed
