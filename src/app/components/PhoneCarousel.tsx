@@ -5,6 +5,11 @@ import Image from "next/image";
 
 const phones = [
   {
+    src: "/images/app-settings.png",
+    alt: "Sorted app settings screen with profile, subscription plan, email receipts, and Stripe payments",
+    label: "Settings",
+  },
+  {
     src: "/images/app-receipts.png",
     alt: "Sorted app receipts screen showing category filters, total expenses, tax saved, and itemised receipt list",
     label: "Receipts",
@@ -13,11 +18,6 @@ const phones = [
     src: "/images/app-dashboard.png",
     alt: "Sorted app dashboard with Hedgie greeting, tax estimate, quick actions, spending breakdown, and next payment deadline",
     label: "Dashboard",
-  },
-  {
-    src: "/images/app-invoices.png",
-    alt: "Sorted app invoices screen with status filters, total invoiced, outstanding amount, and invoice list",
-    label: "Invoices",
   },
 ];
 
