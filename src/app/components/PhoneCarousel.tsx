@@ -10,14 +10,14 @@ const phones = [
     label: "Settings",
   },
   {
-    src: "/images/app-receipts.png",
-    alt: "Sorted app receipts screen showing category filters, total expenses, tax saved, and itemised receipt list",
-    label: "Receipts",
-  },
-  {
     src: "/images/app-dashboard.png",
     alt: "Sorted app dashboard with Hedgie greeting, tax estimate, quick actions, spending breakdown, and next payment deadline",
     label: "Dashboard",
+  },
+  {
+    src: "/images/app-receipts.png",
+    alt: "Sorted app receipts screen showing category filters, total expenses, tax saved, and itemised receipt list",
+    label: "Receipts",
   },
 ];
 
