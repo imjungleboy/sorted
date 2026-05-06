@@ -5,19 +5,34 @@ import Image from "next/image";
 
 const phones = [
   {
-    src: "/images/app-settings.png",
-    alt: "Sorted app settings screen with profile, subscription plan, email receipts, and Stripe payments",
-    label: "Settings",
+    src: "/images/app-receipt-scan.webp",
+    alt: "Sorted ‘Add Receipt’ screen on iPhone, with options to pick a photo from library, use the camera, or enter a receipt manually.",
+    label: "Scan receipts",
   },
   {
-    src: "/images/app-dashboard.png",
-    alt: "Sorted app dashboard with Hedgie greeting, tax estimate, quick actions, spending breakdown, and next payment deadline",
+    src: "/images/app-dashboard.webp",
+    alt: "Sorted home dashboard on iPhone, showing an estimated self-employment tax of £4,209.18, quick actions for Scan, Invoice, Income, Mileage and P&L, and an income-by-source breakdown.",
     label: "Dashboard",
   },
   {
-    src: "/images/app-receipts.png",
-    alt: "Sorted app receipts screen showing category filters, total expenses, tax saved, and itemised receipt list",
-    label: "Receipts",
+    src: "/images/app-email-receipts.webp",
+    alt: "Sorted settings screen on iPhone, showing the user’s unique mysorted.app email alias for forwarding online receipts.",
+    label: "Email receipts in",
+  },
+  {
+    src: "/images/app-pl-report.webp",
+    alt: "Sorted P&L Report screen on iPhone, with tax-year selector, income, expenses, net profit and an estimated tax owed of £4,209.18, plus a Generate PDF Report button.",
+    label: "P&L report",
+  },
+  {
+    src: "/images/app-accountant-pack.webp",
+    alt: "Sorted settings screen on iPhone, showing Generate P&L Report, Tax Summary Report, Export All Data and a Share with Accountant option.",
+    label: "Accountant pack",
+  },
+  {
+    src: "/images/app-vault.webp",
+    alt: "Sorted Vault screen on iPhone, showing total expenses of £148.80, tax saved of £29.76, and a list of categorised receipts from Tesco, Boots and Costa Coffee.",
+    label: "Vault",
   },
 ];
 
@@ -34,14 +49,14 @@ function PhoneMockup({
     <div
       className={`bg-[#1a1a1a] rounded-[2.5rem] p-[6px] shadow-2xl ${className}`}
     >
-      <div className="rounded-[2.2rem] overflow-hidden">
+      <div className="rounded-[2.2rem] overflow-hidden bg-white">
         <Image
           src={src}
           alt={alt}
-          width={260}
-          height={520}
+          width={600}
+          height={1245}
           loading="lazy"
-          className="w-full h-[440px] md:h-[520px] object-cover object-top"
+          className="block w-full h-auto"
         />
       </div>
     </div>
@@ -50,7 +65,7 @@ function PhoneMockup({
 
 export default function PhoneCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeIdx, setActiveIdx] = useState(1);
+  const [activeIdx, setActiveIdx] = useState(0);
 
   const handleScroll = useCallback(() => {
     const el = scrollRef.current;
@@ -73,64 +88,36 @@ export default function PhoneCarousel() {
   useEffect(() => {
     const el = scrollRef.current;
     if (!el) return;
-    // Scroll to center phone (dashboard) on mount
-    const centerChild = el.children[1] as HTMLElement;
-    if (centerChild) {
+    const first = el.children[0] as HTMLElement | undefined;
+    if (first) {
       el.scrollLeft =
-        centerChild.offsetLeft -
-        el.offsetWidth / 2 +
-        centerChild.offsetWidth / 2;
+        first.offsetLeft - el.offsetWidth / 2 + first.offsetWidth / 2;
     }
   }, []);
 
   return (
     <div>
-      {/* Desktop: three phones with tilt */}
-      <div className="hidden md:flex items-end justify-center gap-8">
-        <PhoneMockup
-          src={phones[0].src}
-          alt={phones[0].alt}
-          className="w-[240px] -rotate-[4deg]"
-        />
-        <PhoneMockup
-          src={phones[1].src}
-          alt={phones[1].alt}
-          className="w-[260px] scale-105 z-10"
-        />
-        <PhoneMockup
-          src={phones[2].src}
-          alt={phones[2].alt}
-          className="w-[240px] rotate-[4deg]"
-        />
-      </div>
-
-      {/* Desktop captions */}
-      <div className="hidden md:flex justify-center gap-8 mt-5">
-        {phones.map((p) => (
-          <span
-            key={p.label}
-            className="w-[240px] text-center text-sm font-medium text-smoke"
-          >
-            {p.label}
-          </span>
-        ))}
-      </div>
-
-      {/* Mobile: horizontal scroll */}
+      {/* Horizontal scroll carousel */}
       <div
         ref={scrollRef}
         onScroll={handleScroll}
-        className="md:hidden flex gap-5 overflow-x-auto snap-x snap-mandatory px-8 pb-4 no-scrollbar"
+        className="flex gap-5 md:gap-8 overflow-x-auto snap-x snap-mandatory px-8 md:px-16 pb-4 no-scrollbar"
       >
         {phones.map((p) => (
-          <div key={p.label} className="snap-center flex-shrink-0 w-[240px]">
+          <figure
+            key={p.label}
+            className="snap-center flex-shrink-0 w-[240px] md:w-[260px]"
+          >
             <PhoneMockup src={p.src} alt={p.alt} className="w-full" />
-          </div>
+            <figcaption className="mt-4 text-center text-sm font-medium text-smoke">
+              {p.label}
+            </figcaption>
+          </figure>
         ))}
       </div>
 
-      {/* Mobile dots */}
-      <div className="md:hidden flex justify-center gap-2 mt-4">
+      {/* Dots */}
+      <div className="flex justify-center gap-2 mt-4">
         {phones.map((p, i) => (
           <span
             key={p.label}
@@ -141,8 +128,8 @@ export default function PhoneCarousel() {
         ))}
       </div>
 
-      {/* Mobile swipe hint */}
-      <p className="md:hidden text-center text-sm text-smoke mt-2 flex items-center justify-center gap-1">
+      {/* Swipe hint */}
+      <p className="text-center text-sm text-smoke mt-2 flex items-center justify-center gap-1">
         Swipe to explore
         <svg
           className="w-4 h-4"

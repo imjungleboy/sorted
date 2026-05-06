@@ -7,7 +7,7 @@ import Link from "next/link";
 const navLinks = [
   { label: "Features", href: "#features" },
   { label: "Pricing", href: "#pricing" },
-  { label: "Download", href: "#download" },
+  { label: "Download", href: "/#download" },
 ];
 
 export default function Navbar() {
@@ -41,12 +41,12 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#download"
+          <Link
+            href="/#download"
             className="inline-flex items-center cursor-pointer rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-amber/25 hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             Get Sorted
-          </a>
+          </Link>
         </nav>
 
         {/* Mobile hamburger */}
@@ -80,13 +80,13 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
-          <a
-            href="#download"
+          <Link
+            href="/#download"
             onClick={() => setOpen(false)}
             className="mt-2 block text-center rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-white"
           >
             Get Sorted
-          </a>
+          </Link>
         </div>
       )}
     </header>

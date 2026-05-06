@@ -1,14 +1,17 @@
+import DownloadCta from "../components/DownloadCta";
+
 export const metadata = {
   title: "Privacy Policy — Sorted",
 };
 
 export default function PrivacyPage() {
   return (
+    <>
     <div className="max-w-3xl mx-auto px-6 py-12">
       <h1 className="font-[family-name:var(--font-nunito)] text-3xl font-bold text-forest mb-2">
         Privacy Policy
       </h1>
-      <p className="text-sm text-charcoal/60 mb-8">Last updated: 20 March 2026</p>
+      <p className="text-sm text-charcoal/60 mb-8">Last updated: 6 May 2026</p>
 
       <div className="prose prose-sm max-w-none text-charcoal/80 space-y-6">
         <p>
@@ -18,12 +21,12 @@ export default function PrivacyPage() {
         <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">1. What We Collect</h2>
         <p>We collect the following personal data when you use Sorted:</p>
         <ul className="list-disc pl-6 space-y-1">
-          <li><strong>Account information:</strong> Name, email address</li>
+          <li><strong>Account information:</strong> Name and email address</li>
           <li><strong>Business details:</strong> Business name, address, UTR number, VAT number</li>
-          <li><strong>Receipt data:</strong> Images of receipts you scan, extracted merchant name, amount, date, and category</li>
-          <li><strong>Invoice data:</strong> Client details, line items, amounts, payment status</li>
-          <li><strong>Expense records:</strong> Categorised expense entries and mileage logs</li>
-          <li><strong>Usage data:</strong> App interactions, device type, and crash reports</li>
+          <li><strong>Receipts:</strong> Images of receipts you scan or forward, plus the merchant name, amount, date, and category extracted from them</li>
+          <li><strong>Transactions:</strong> Income entries, invoices (client details, line items, amounts, payment status), expense records, and mileage logs</li>
+          <li><strong>Subscription &amp; payment data:</strong> Subscription status, transaction identifiers, and the last four digits of the card used for invoice payouts (full card details are handled by Stripe and never reach our servers)</li>
+          <li><strong>Usage &amp; diagnostic data:</strong> App interactions, device type, performance metrics, and crash reports</li>
         </ul>
 
         <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">2. How We Use Your Data</h2>
@@ -40,14 +43,17 @@ export default function PrivacyPage() {
           Our lawful bases for processing are: performance of our contract with you (Article 6(1)(b)), our legitimate interests in improving the service (Article 6(1)(f)), and your consent where required (Article 6(1)(a)).
         </p>
 
-        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">3. Third-Party Services</h2>
-        <p>We use the following third-party services to operate Sorted:</p>
+        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">3. Sub-processors</h2>
+        <p>We use the following data processors to operate Sorted:</p>
         <ul className="list-disc pl-6 space-y-1">
-          <li><strong>Supabase:</strong> Database hosting, user authentication, and file storage (receipt images). Data is stored in EU-region servers.</li>
-          <li><strong>Anthropic (Claude API):</strong> Receipt images are sent to the Claude Vision API for OCR processing to extract receipt details. Images are processed in accordance with Anthropic&apos;s data processing terms and are not used to train AI models.</li>
-          <li><strong>Resend:</strong> Email delivery service used to send invoices to your clients on your behalf.</li>
-          <li><strong>RevenueCat:</strong> Subscription management and payment processing coordination.</li>
-          <li><strong>Apple App Store / Google Play Store:</strong> In-app purchase processing and subscription billing.</li>
+          <li><strong>Supabase</strong> — database hosting, authentication, and file storage (receipt images). Data is stored on EU-region servers.</li>
+          <li><strong>RevenueCat</strong> — subscription state management and entitlement checks.</li>
+          <li><strong>Stripe</strong> — payment processing for invoices you send to your clients. Card details are handled directly by Stripe and never stored on our servers.</li>
+          <li><strong>PostHog</strong> — product analytics (feature usage, funnels). Self-hosted on EU-region infrastructure.</li>
+          <li><strong>Sentry</strong> — crash and error reporting to help us diagnose problems.</li>
+          <li><strong>Anthropic (Claude API)</strong> — receipt images are sent to Claude Vision for OCR. Images are processed under Anthropic&apos;s data-processing terms and are not used to train AI models.</li>
+          <li><strong>Resend</strong> — transactional email delivery (invoices sent to your clients, account emails).</li>
+          <li><strong>Apple App Store / Google Play Store</strong> — in-app purchase processing and subscription billing for Sorted Pro.</li>
         </ul>
 
         <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">4. Data Storage and Security</h2>
@@ -73,8 +79,9 @@ export default function PrivacyPage() {
           <li><strong>Withdraw consent:</strong> Where processing is based on consent, withdraw it at any time</li>
         </ul>
         <p>
-          You can export all your data and delete your account directly from the Settings screen in the Sorted app. For any other requests, contact us at{" "}
-          <a href="mailto:support@mysorted.app" className="text-teal hover:underline">support@mysorted.app</a>.
+          You can export your data and delete your account directly from the Settings screen in the Sorted app. If you no longer have access to the app, follow the steps on our{" "}
+          <a href="/delete-account" className="text-teal hover:underline">Delete my account</a> page or email{" "}
+          <a href="mailto:support@mysorted.app" className="text-teal hover:underline">support@mysorted.app</a>. We action verified deletion requests within 30 days.
         </p>
 
         <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">6. Data Retention</h2>
@@ -111,5 +118,7 @@ export default function PrivacyPage() {
         </p>
       </div>
     </div>
+    <DownloadCta />
+    </>
   );
 }

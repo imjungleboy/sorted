@@ -1,11 +1,14 @@
 import Image from "next/image";
 import Link from "next/link";
 
+const REGISTERED_OFFICE = process.env.NEXT_PUBLIC_REGISTERED_OFFICE ?? "";
+const COMPANY_NUMBER = process.env.NEXT_PUBLIC_COMPANY_NUMBER ?? "";
+
 export default function Footer() {
   return (
     <footer className="bg-charcoal text-smoke">
-      <div className="max-w-6xl mx-auto px-5 py-10 flex flex-col md:flex-row items-center justify-between gap-6 text-sm">
-        {/* Left */}
+      <div className="max-w-6xl mx-auto px-5 py-10 grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-start text-sm">
+        {/* Left — brand */}
         <div className="flex items-center gap-2.5">
           <Image
             src="/images/hedgie-icon.png"
@@ -17,24 +20,43 @@ export default function Footer() {
           <span className="font-[family-name:var(--font-nunito)] font-bold text-white/80">
             Sorted
           </span>
-          <span className="text-smoke/60 ml-1">&copy; 2026 MySorted Ltd</span>
         </div>
 
-        {/* Middle */}
-        <div className="flex gap-6">
-          <Link href="/privacy" className="hover:text-white transition-colors">
-            Privacy Policy
-          </Link>
-          <Link href="/terms" className="hover:text-white transition-colors">
-            Terms
-          </Link>
-          <Link href="/support" className="hover:text-white transition-colors">
-            Support
-          </Link>
+        {/* Middle — links + company details */}
+        <div className="flex flex-col gap-3 md:items-center md:text-center">
+          <nav className="flex flex-wrap gap-x-6 gap-y-2 md:justify-center">
+            <Link href="/privacy" className="hover:text-white transition-colors">
+              Privacy
+            </Link>
+            <Link href="/terms" className="hover:text-white transition-colors">
+              Terms
+            </Link>
+            <Link href="/support" className="hover:text-white transition-colors">
+              Support
+            </Link>
+            <Link
+              href="/delete-account"
+              className="hover:text-white transition-colors"
+            >
+              Delete my account
+            </Link>
+            <a
+              href="mailto:support@mysorted.app"
+              className="hover:text-white transition-colors"
+            >
+              support@mysorted.app
+            </a>
+          </nav>
+          <p className="text-smoke/60 text-xs leading-relaxed max-w-md">
+            &copy; 2026 MySorted Ltd
+            {COMPANY_NUMBER && <> · Company No. {COMPANY_NUMBER}</>}
+            {REGISTERED_OFFICE && <> · Registered office: {REGISTERED_OFFICE}</>}
+            <> · Registered in England and Wales.</>
+          </p>
         </div>
 
         {/* Right — socials */}
-        <div className="flex gap-4">
+        <div className="flex gap-4 md:justify-end">
           <a
             href="https://tiktok.com/@sortedtax"
             target="_blank"

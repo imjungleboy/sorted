@@ -1,14 +1,19 @@
+import { getPricing } from "@/lib/pricing";
+import DownloadCta from "../components/DownloadCta";
+
 export const metadata = {
   title: "Terms of Service — Sorted",
 };
 
-export default function TermsPage() {
+export default async function TermsPage() {
+  const pricing = await getPricing();
   return (
+    <>
     <div className="max-w-3xl mx-auto px-6 py-12">
       <h1 className="font-[family-name:var(--font-nunito)] text-3xl font-bold text-forest mb-2">
         Terms of Service
       </h1>
-      <p className="text-sm text-charcoal/60 mb-8">Last updated: 20 March 2026</p>
+      <p className="text-sm text-charcoal/60 mb-8">Last updated: 6 May 2026</p>
 
       <div className="prose prose-sm max-w-none text-charcoal/80 space-y-6">
         <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">1. Acceptance of Terms</h2>
@@ -30,14 +35,16 @@ export default function TermsPage() {
         </p>
 
         <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">4. Subscription and Billing</h2>
-        <p>Sorted is available as a subscription service at £4.99 per month.</p>
+        <p>
+          Sorted is free to use within the limits described in the App. Sorted Pro is available as an auto-renewing subscription at {pricing.monthlyPrice} per month.
+        </p>
         <ul className="list-disc pl-6 space-y-1">
-          <li>A 7-day free trial is available for new users.</li>
-          <li>Subscriptions are billed monthly through the Apple App Store or Google Play Store.</li>
-          <li>Payment is charged to your Apple ID or Google account at confirmation of purchase.</li>
+          <li>A {pricing.trialDays}-day free trial of Sorted Pro is available to new subscribers.</li>
+          <li>Subscriptions are billed monthly through the Apple App Store or Google Play Store. Sorted does not collect or store payment-method details directly.</li>
+          <li>Payment is charged to your Apple ID or Google account at confirmation of purchase, including at the end of any free-trial period unless you cancel beforehand.</li>
           <li>Your subscription automatically renews unless cancelled at least 24 hours before the end of the current billing period.</li>
-          <li>You can manage and cancel your subscription through your device&apos;s App Store or Google Play settings.</li>
-          <li>No refunds are provided for partial billing periods, though you may be entitled to a refund under Apple&apos;s or Google&apos;s refund policies.</li>
+          <li>You can manage, pause, or cancel your subscription only through the App Store or Google Play — not from this website or inside the Sorted app.</li>
+          <li>No refunds are provided for partial billing periods. Refund requests are governed by Apple&apos;s and Google&apos;s respective refund policies.</li>
         </ul>
 
         <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">5. Cancellation</h2>
@@ -99,5 +106,7 @@ export default function TermsPage() {
         </p>
       </div>
     </div>
+    <DownloadCta />
+    </>
   );
 }

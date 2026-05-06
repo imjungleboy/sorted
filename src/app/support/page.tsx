@@ -1,4 +1,5 @@
 import Image from "next/image";
+import DownloadCta from "../components/DownloadCta";
 
 export const metadata = {
   title: "Support — Sorted",
@@ -39,6 +40,7 @@ const faqs = [
 
 export default function SupportPage() {
   return (
+    <>
     <div className="max-w-3xl mx-auto px-6 py-16 md:py-24">
       {/* Header */}
       <h1 className="font-[family-name:var(--font-nunito)] text-4xl md:text-5xl font-bold text-forest mb-2">
@@ -119,5 +121,7 @@ export default function SupportPage() {
         />
       </div>
     </div>
+    <DownloadCta heading="Get the app" />
+    </>
   );
 }
