@@ -1,6 +1,7 @@
 import Image from "next/image";
 
-const APP_STORE_URL = "https://apps.apple.com/app/id6761042935";
+const APP_STORE_URL =
+  "https://apps.apple.com/gb/app/sorted-self-employed-tax/id6761042935";
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=app.mysorted.sorted";
 const SUPPORT_EMAIL = "support@mysorted.app";

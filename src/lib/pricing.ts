@@ -11,7 +11,7 @@ export type Pricing = {
 const FALLBACK: Pricing = {
   monthlyPrice: "£4.99",
   trialDays: 30,
-  appStoreUrl: `https://apps.apple.com/app/id${APP_ID}`,
+  appStoreUrl: `https://apps.apple.com/gb/app/sorted-self-employed-tax/id${APP_ID}`,
   source: "fallback",
 };
 

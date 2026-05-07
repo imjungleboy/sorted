@@ -306,7 +306,7 @@ export default async function Home() {
             </p>
             <div className="mt-6 md:mt-8 flex flex-row flex-wrap justify-center md:justify-start items-center gap-3">
               <a
-                href="https://apps.apple.com/app/id6761042935"
+                href="https://apps.apple.com/gb/app/sorted-self-employed-tax/id6761042935"
                 target="_blank"
                 rel="noopener"
                 aria-label="Download Sorted on the App Store"
