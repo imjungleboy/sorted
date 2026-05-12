@@ -1,0 +1,15 @@
+{
+  "applinks": {
+    "apps": [],
+    "details": [
+      {
+        "appID": "7Z3M72H4WV.app.mysorted.sorted",
+        "paths": [
+          "/hmrc-callback",
+          "/hmrc-callback-staging",
+          "/hmrc-callback-dev"
+        ]
+      }
+    ]
+  }
+}

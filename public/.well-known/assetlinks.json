@@ -1,0 +1,15 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "app.mysorted.sorted",
+      "sha256_cert_fingerprints": [
+        "E3:75:B4:D7:63:1D:C7:F0:98:FF:E6:65:CB:65:BC:26:C1:97:A6:E5:77:91:E9:5C:43:16:F9:C8:B9:9C:C1:3B",
+        "AE:F9:CE:6A:E3:57:EF:79:1D:DE:9E:8B:12:95:79:C1:4F:E0:DB:7E:28:3D:A8:27:65:CE:54:3A:92:B1:6C:71"
+      ]
+    }
+  }
+]
