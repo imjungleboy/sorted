@@ -41,6 +41,14 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <a
+            href="https://app.mysorted.app"
+            target="_blank"
+            rel="noopener"
+            className="text-sm font-medium text-charcoal cursor-pointer hover:text-teal transition-colors"
+          >
+            Sign in
+          </a>
           <Link
             href="/#download"
             className="inline-flex items-center cursor-pointer rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-amber/25 hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] transition-all"
@@ -80,6 +88,15 @@ export default function Navbar() {
               {l.label}
             </a>
           ))}
+          <a
+            href="https://app.mysorted.app"
+            target="_blank"
+            rel="noopener"
+            onClick={() => setOpen(false)}
+            className="block py-3 text-sm font-medium text-charcoal hover:text-teal transition-colors"
+          >
+            Sign in
+          </a>
           <Link
             href="/#download"
             onClick={() => setOpen(false)}

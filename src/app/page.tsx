@@ -338,6 +338,17 @@ export default async function Home() {
                 />
               </a>
             </div>
+            <p className="mt-4 text-sm text-charcoal/60">
+              Already using Sorted?{" "}
+              <a
+                href="https://app.mysorted.app"
+                target="_blank"
+                rel="noopener"
+                className="text-teal font-semibold hover:underline cursor-pointer"
+              >
+                Sign in at app.mysorted.app &rarr;
+              </a>
+            </p>
           </div>
           <div className="flex-[2] flex justify-center">
             <Image
