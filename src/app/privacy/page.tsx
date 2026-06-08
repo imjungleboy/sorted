@@ -11,7 +11,7 @@ export default function PrivacyPage() {
       <h1 className="font-[family-name:var(--font-nunito)] text-3xl font-bold text-forest mb-2">
         Privacy Policy
       </h1>
-      <p className="text-sm text-charcoal/60 mb-8">Last updated: 6 May 2026</p>
+      <p className="text-sm text-charcoal/60 mb-8">Last updated: 8 June 2026</p>
 
       <div className="prose prose-sm max-w-none text-charcoal/80 space-y-6">
         <p>
@@ -27,6 +27,7 @@ export default function PrivacyPage() {
           <li><strong>Transactions:</strong> Income entries, invoices (client details, line items, amounts, payment status), expense records, and mileage logs</li>
           <li><strong>Subscription &amp; payment data:</strong> Subscription status, transaction identifiers, and the last four digits of the card used for invoice payouts (full card details are handled by Stripe and never reach our servers)</li>
           <li><strong>Usage &amp; diagnostic data:</strong> App interactions, device type, performance metrics, and crash reports</li>
+          <li><strong>Location data (optional, opt-in):</strong> Precise location coordinates (latitude and longitude) collected via your device&apos;s GPS only when you enable &ldquo;Auto-track mileage&rdquo; in Settings. Background location access is used so the app can continue recording a trip while your phone is locked during driving. This feature is off by default, must be explicitly enabled by you, and can be revoked at any time in the app or in your device&apos;s permission settings. We do not collect location when the feature is disabled.</li>
         </ul>
 
         <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">2. How We Use Your Data</h2>
@@ -38,6 +39,7 @@ export default function PrivacyPage() {
           <li>Calculate estimated tax liabilities</li>
           <li>Send you HMRC deadline reminders and service notifications</li>
           <li>Manage your subscription and process payments</li>
+          <li>Detect business car trips for HMRC mileage logging (only when you opt in to Auto-track mileage)</li>
         </ul>
         <p>
           Our lawful bases for processing are: performance of our contract with you (Article 6(1)(b)), our legitimate interests in improving the service (Article 6(1)(f)), and your consent where required (Article 6(1)(a)).
@@ -67,7 +69,21 @@ export default function PrivacyPage() {
           <li>Regular security reviews of our infrastructure</li>
         </ul>
 
-        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">5. Your Rights (UK GDPR)</h2>
+        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">5. Location Data and Mileage Tracking</h2>
+        <p>
+          Sorted offers an optional Auto-track mileage feature that uses your device&apos;s GPS to automatically detect and log business car trips for HMRC-compliant mileage records. This section sets out exactly how this works.
+        </p>
+        <ul className="list-disc pl-6 space-y-1">
+          <li><strong>Off by default.</strong> The feature is disabled until you explicitly enable it in Settings &rarr; Auto-track mileage. We do not access location data unless and until you opt in.</li>
+          <li><strong>What we collect.</strong> Precise location coordinates (latitude and longitude) sampled by your device&apos;s GPS while a trip is in progress. We use these samples to compute trip start time, end time, and distance travelled, which are then saved as a trip record.</li>
+          <li><strong>Background access.</strong> So the app can keep recording a trip after you put your phone down during driving, we request &ldquo;Allow all the time&rdquo; location permission. Recording starts when the app detects sustained driving speed and stops when the vehicle has been stationary for several minutes.</li>
+          <li><strong>Why we need this.</strong> HMRC requires sole traders claiming the simplified mileage allowance to keep accurate records of business journeys. Auto-tracking is a more reliable substitute for handwritten logs.</li>
+          <li><strong>Where it is stored.</strong> Trip records are stored on your device and synced to your Supabase account (EU-region servers), the same way the rest of your transactional data is stored. Raw location samples are not retained after the trip record is computed.</li>
+          <li><strong>Who we share it with.</strong> We do not share your location data with any third party. It is not used for advertising, profiling, or analytics. Supabase processes it solely as our database provider.</li>
+          <li><strong>How to control it.</strong> You can disable Auto-track mileage at any time from Settings inside the app, or revoke the underlying device permission from your device&apos;s permission settings. Disabling immediately stops all location collection. Deleting your account removes all stored trip records within 30 days.</li>
+        </ul>
+
+        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">6. Your Rights (UK GDPR)</h2>
         <p>Under the UK GDPR, you have the right to:</p>
         <ul className="list-disc pl-6 space-y-1">
           <li><strong>Access:</strong> Request a copy of all personal data we hold about you</li>
@@ -84,27 +100,27 @@ export default function PrivacyPage() {
           <a href="mailto:support@mysorted.app" className="text-teal hover:underline">support@mysorted.app</a>. We action verified deletion requests within 30 days.
         </p>
 
-        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">6. Data Retention</h2>
+        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">7. Data Retention</h2>
         <p>
           We retain your personal data for as long as your account is active. If you delete your account, we will delete all associated personal data within 30 days, except where we are required by law to retain certain records (e.g., for tax or legal compliance purposes, up to 7 years).
         </p>
 
-        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">7. Data Sharing</h2>
+        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">8. Data Sharing</h2>
         <p>
           We do not sell your personal data to any third party. We only share your data with the third-party service providers listed above, solely for the purpose of operating the Sorted app.
         </p>
 
-        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">8. Children&apos;s Privacy</h2>
+        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">9. Children&apos;s Privacy</h2>
         <p>
           Sorted is not intended for use by anyone under the age of 18. We do not knowingly collect personal data from children. If we become aware that we have collected data from someone under 18, we will delete it promptly.
         </p>
 
-        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">9. Changes to This Policy</h2>
+        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">10. Changes to This Policy</h2>
         <p>
           We may update this Privacy Policy from time to time. We will notify you of any material changes via the app or email. Continued use of Sorted after changes constitutes acceptance of the updated policy.
         </p>
 
-        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">10. Contact Us</h2>
+        <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest mt-8">11. Contact Us</h2>
         <p>
           If you have questions about this Privacy Policy or wish to exercise your rights, contact us at:
         </p>
