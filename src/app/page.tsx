@@ -209,7 +209,7 @@ function buildComparisonRows(monthlyPrice: string) {
   { label: "Receipt scanning", others: "Manual entry or paid add-on", sorted: "AI vision \u2014 3 second scan" },
   { label: "Learning curve", others: "Needs training", sorted: "If you can take a photo, you\u2019re sorted" },
   { label: "Built for", others: "Businesses & accountants", sorted: "Self-employed humans" },
-  { label: "MTD compliant", others: "Yes", sorted: "Yes" },
+  { label: "Making Tax Digital", others: "Files for you", sorted: "Exports ready for your accountant or MTD software" },
   { label: "Friendly hedgehog", others: "No", sorted: "Obviously", highlight: true },
   ];
 }
@@ -389,13 +389,13 @@ export default async function Home() {
 
           <FadeIn className="mt-10">
             <p className="text-lg text-charcoal/70 leading-relaxed">
-              Making Tax Digital (MTD) means HMRC will require quarterly digital
-              submissions from every self-employed person earning over £50k from
-              April 2026 — dropping to £20k by 2028. The old way of doing things
-              is officially over.
+              Making Tax Digital (MTD) means HMRC now wants digital records and
+              quarterly updates from self-employed people with income (turnover)
+              over £50k — dropping to £30k in April 2027 and £20k in April 2028.
+              The old way of doing things is officially over.
             </p>
             <p className="mt-6 text-forest font-medium text-lg">
-              Sorted gets you compliant in under 5 minutes.
+              Sorted keeps the digital records — your accountant or MTD software sends the updates.
             </p>
           </FadeIn>
         </div>
