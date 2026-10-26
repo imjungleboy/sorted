@@ -173,30 +173,19 @@ const features: {
   },
 ];
 
-const testimonials = [
+// How Sorted fits a working week. Examples, not reviews or quotes.
+const weekMoments = [
   {
-    quote:
-      "I was dreading MTD. Downloaded Sorted, scanned 3 months of receipts in 20 minutes, and now I actually know what I owe. Game changer.",
-    name: "Sarah",
-    role: "freelance designer",
-    initial: "S",
-    color: "bg-amber/20 text-amber",
+    when: "Monday, before the first job",
+    what: "Snap last week\u2019s receipts. Sorted reads each one and files it.",
   },
   {
-    quote:
-      "I tried Xero. I tried QuickBooks. I tried a spreadsheet. I tried ignoring it. Sorted is the first thing that actually stuck.",
-    name: "Marcus",
-    role: "personal trainer",
-    initial: "M",
-    color: "bg-teal/20 text-teal",
+    when: "Wednesday, job done",
+    what: "Send the invoice from your phone. Your client pays by card and it\u2019s marked paid.",
   },
   {
-    quote:
-      "Hedgie reminds me about deadlines and I\u2019ve never once wanted to throw my phone. Can\u2019t say that about my accountant\u2019s emails.",
-    name: "Priya",
-    role: "Deliveroo courier",
-    initial: "P",
-    color: "bg-coral/20 text-coral",
+    when: "January, no panic",
+    what: "Your tax estimate has kept up all year, so you know what to put aside.",
   },
 ];
 
@@ -713,27 +702,11 @@ export default async function Home() {
           </FadeIn>
 
           <div className="grid md:grid-cols-3 gap-6">
-            {testimonials.map((t) => (
-              <FadeIn key={t.name}>
+            {weekMoments.map((m) => (
+              <FadeIn key={m.when}>
                 <div className="bg-white rounded-2xl p-6 shadow-sm h-full flex flex-col">
-                  <div className="flex gap-0.5 mb-3">
-                    {[...Array(5)].map((_, i) => (
-                      <svg key={i} className="w-4 h-4 text-gold" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
-                      </svg>
-                    ))}
-                  </div>
-                  <p className="italic text-charcoal/80 leading-relaxed flex-1">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                  <div className="mt-4 flex items-center gap-3">
-                    <div className={`w-8 h-8 rounded-full ${t.color} flex items-center justify-center text-xs font-bold`}>
-                      {t.initial}
-                    </div>
-                    <p className="text-sm text-smoke">
-                      {t.name}, {t.role}
-                    </p>
-                  </div>
+                  <p className="text-teal text-xs font-bold tracking-wide uppercase">{m.when}</p>
+                  <p className="mt-3 text-charcoal/80 text-lg leading-relaxed flex-1">{m.what}</p>
                 </div>
               </FadeIn>
             ))}
