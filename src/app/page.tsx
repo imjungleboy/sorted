@@ -12,7 +12,7 @@ const GOOGLE_MANAGE_SUBSCRIPTIONS_URL =
   "https://support.google.com/googleplay/answer/7018481";
 
 const FREE_FEATURES = [
-  "10 receipt scans a month",
+  "30 receipt scans a month",
   "3 invoices a month",
   "Unlimited mileage tracking",
   "Live tax estimate",
