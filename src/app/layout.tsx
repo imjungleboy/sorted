@@ -16,10 +16,23 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
+const description =
+  "Scan receipts. Send invoices. Know what you owe. The simplest way for UK self-employed people to track expenses and estimate tax.";
+
 export const metadata: Metadata = {
+  // Link previews (opengraph-image.png) need absolute URLs.
+  metadataBase: new URL("https://mysorted.app"),
   title: "Sorted — The anti-accounting app for UK freelancers",
-  description:
-    "Scan receipts. Send invoices. Know what you owe. The simplest way for UK self-employed people to track expenses and estimate tax.",
+  description,
+  openGraph: {
+    title: "Sorted — bookkeeping for UK sole traders",
+    description,
+    url: "https://mysorted.app",
+    siteName: "Sorted",
+    locale: "en_GB",
+    type: "website",
+  },
+  twitter: { card: "summary_large_image" },
 };
 
 export default function RootLayout({

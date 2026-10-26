@@ -2,6 +2,7 @@ import Image from "next/image";
 import FadeIn from "./components/FadeIn";
 import PhoneCarousel from "./components/PhoneCarousel";
 import ScannerChecklist from "./components/ScannerChecklist";
+import HeroHedgie from "./components/HeroHedgie";
 import { getPricing } from "@/lib/pricing";
 
 const PLAY_STORE_URL =
@@ -351,14 +352,7 @@ export default async function Home() {
             </p>
           </div>
           <div className="flex-[2] flex justify-center">
-            <Image
-              src="/images/hedgie-hero.png"
-              alt="Hedgie the hedgehog mascot holding a phone with receipts and documents"
-              width={1496}
-              height={1016}
-              priority
-              className="w-44 md:w-[520px]"
-            />
+            <HeroHedgie />
           </div>
         </div>
       </section>
@@ -496,6 +490,19 @@ export default async function Home() {
                   <span className="text-smoke text-sm font-medium">Total</span>
                   <span className="text-forest font-bold text-xl">£6.25</span>
                 </div>
+              </div>
+
+              {/* Hedgie peeking up, thinking, as he does while the app reads */}
+              <div className="absolute -bottom-12 -left-10 w-24 md:w-28 z-20 animate-peek" aria-hidden>
+                <Image
+                  src="/images/hedgie-thinking.png"
+                  alt=""
+                  width={768}
+                  height={768}
+                  loading="lazy"
+                  sizes="112px"
+                  className="w-full h-auto"
+                />
               </div>
 
               {/* Result card */}
@@ -724,15 +731,16 @@ export default async function Home() {
           </div>
 
           <FadeIn className="mt-14 text-center">
-            <div className="inline-block relative">
-              <div className="absolute inset-0 bg-gold/20 rounded-full scale-125 blur-md" />
+            <div className="inline-block relative animate-float">
+              <div className="absolute inset-0 bg-gold/20 rounded-full scale-110 blur-md" />
               <Image
-                src="/images/hedgie-celebrating.png"
-                alt="Hedgie celebrating with arms up"
-                width={150}
-                height={84}
+                src="/images/hedgie-celebrate.png"
+                alt="Hedgie celebrating with his arms up"
+                width={768}
+                height={768}
                 loading="lazy"
-                className="relative mx-auto max-h-[120px] w-auto"
+                sizes="160px"
+                className="relative mx-auto w-36 md:w-40 h-auto"
               />
             </div>
           </FadeIn>
@@ -801,15 +809,19 @@ export default async function Home() {
           </div>
           <div className="flex-shrink-0">
             <div className="relative">
-              <div className="absolute inset-0 bg-white/10 rounded-full scale-125 blur-xl" />
-              <Image
-                src="/images/hedgie-waving.png"
-                alt="Hedgie waving hello"
-                width={220}
-                height={123}
-                loading="lazy"
-                className="relative w-40 md:w-[200px]"
-              />
+              <div className="absolute inset-0 bg-white/10 rounded-full scale-110 blur-xl" />
+              <div className="relative animate-wiggle">
+                {/* Flipped so he points at the download buttons */}
+                <Image
+                  src="/images/hedgie-pointing.png"
+                  alt="Hedgie pointing at the download buttons"
+                  width={768}
+                  height={768}
+                  loading="lazy"
+                  sizes="(min-width: 768px) 220px, 170px"
+                  className="w-44 md:w-[220px] h-auto -scale-x-100"
+                />
+              </div>
             </div>
           </div>
         </div>

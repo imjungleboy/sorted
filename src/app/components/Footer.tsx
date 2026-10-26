@@ -11,11 +11,11 @@ export default function Footer() {
         {/* Left — brand */}
         <div className="flex items-center gap-2.5">
           <Image
-            src="/images/hedgie-icon.png"
+            src="/images/hedgie-portrait.png"
             alt="Sorted"
             width={28}
             height={28}
-            className="rounded-full opacity-80"
+            className="rounded-full opacity-90"
           />
           <span className="font-[family-name:var(--font-nunito)] font-bold text-white/80">
             Sorted

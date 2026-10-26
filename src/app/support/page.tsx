@@ -110,15 +110,18 @@ export default function SupportPage() {
         </p>
       </section>
 
-      {/* Hedgie waving */}
+      {/* Hedgie on the support line */}
       <div className="flex justify-center mt-8">
-        <Image
-          src="/images/hedgie-waving.png"
-          alt="Hedgie waving"
-          width={220}
-          height={123}
-          className="w-40 md:w-[200px]"
-        />
+        <div className="animate-float">
+          <Image
+            src="/images/hedgie-support.png"
+            alt="Hedgie wearing a headset, ready to help"
+            width={768}
+            height={768}
+            sizes="200px"
+            className="w-40 md:w-[200px] h-auto"
+          />
+        </div>
       </div>
     </div>
     <DownloadCta heading="Get the app" />

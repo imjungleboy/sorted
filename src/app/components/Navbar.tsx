@@ -19,11 +19,13 @@ export default function Navbar() {
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5">
           <Image
-            src="/images/hedgie-icon.png"
+            src="/images/hedgie-portrait.png"
             alt="Sorted mascot"
-            width={2752}
-            height={1536}
-            className="rounded-full w-[52px] h-[52px] object-cover object-center"
+            width={644}
+            height={644}
+            priority
+            sizes="52px"
+            className="rounded-full w-[52px] h-[52px]"
           />
           <span className="font-[family-name:var(--font-nunito)] text-xl font-extrabold text-forest">
             Sorted

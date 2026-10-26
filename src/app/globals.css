@@ -56,6 +56,58 @@ body {
   animation: scan-line 2s ease-in-out infinite;
 }
 
+/* Hedgie and his chips. Same moves as the app: he floats, chips pop in
+   and bob, he wiggles hello. Wrap pop and float in separate elements:
+   both animate transform. */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+.animate-float-slow {
+  animation: float 5.5s ease-in-out infinite;
+}
+
+@keyframes pop-in {
+  0% { opacity: 0; transform: scale(0.6); }
+  70% { opacity: 1; transform: scale(1.06); }
+  100% { opacity: 1; transform: scale(1); }
+}
+.animate-pop {
+  animation: pop-in 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes wiggle {
+  0%, 70%, 100% { transform: rotate(0deg); }
+  74% { transform: rotate(-7deg); }
+  78% { transform: rotate(6deg); }
+  82% { transform: rotate(-4deg); }
+  86% { transform: rotate(2deg); }
+}
+.animate-wiggle {
+  transform-origin: 50% 100%;
+  animation: wiggle 4.5s ease-in-out infinite;
+}
+
+@keyframes peek {
+  0%, 100% { transform: translateY(18%); }
+  45%, 60% { transform: translateY(0); }
+}
+.animate-peek {
+  animation: peek 5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .fade-in-section { opacity: 1; transform: none; transition: none; }
+  .animate-float, .animate-float-slow, .animate-pop, .animate-wiggle, .animate-peek,
+  .animate-pulse-dot, .animate-scan-line {
+    animation: none !important;
+  }
+}
+
 /* Hide scrollbar */
 .no-scrollbar {
   -ms-overflow-style: none;
