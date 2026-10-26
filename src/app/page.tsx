@@ -12,21 +12,19 @@ const GOOGLE_MANAGE_SUBSCRIPTIONS_URL =
   "https://support.google.com/googleplay/answer/7018481";
 
 const FREE_FEATURES = [
-  "10 receipt scans per month",
-  "3 invoices per month",
-  "10 mileage trips per month",
-  "Manual entry & basic reports",
-  "Year-end totals you can export",
+  "10 receipt scans a month",
+  "3 invoices a month",
+  "Unlimited mileage tracking",
+  "Live tax estimate",
+  "Profit & loss report and data export",
   "1.5% card payment fee on invoices",
 ];
 
 const PRO_FEATURES = [
   "Unlimited receipt scanning",
-  "Email receipts straight in",
   "Unlimited invoices, including recurring",
-  "Unlimited HMRC-rate mileage logs",
-  "Full profit & loss reports",
-  "Year-end accountant pack (PDF)",
+  "Email receipts straight in",
+  "Tax summary PDF and one-tap accountant pack",
   "0.5% card payment fee on invoices",
   "Priority support",
 ];
@@ -93,21 +91,20 @@ function BarChartIcon({ className }: IconProps) {
   );
 }
 
-function FileTextIcon({ className }: IconProps) {
-  return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
-      <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8Z" />
-      <path d="M14 2v6h6" />
-      <path d="M16 13H8M16 17H8M10 9H8" />
-    </svg>
-  );
-}
-
 function VaultIcon({ className }: IconProps) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
       <rect width="18" height="11" x="3" y="11" rx="2" />
       <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+    </svg>
+  );
+}
+
+function PoundIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="10" />
+      <path d="M15 8.5a2.5 2.5 0 0 0-5 0V16M8.5 12.5h5M8.5 16h7" />
     </svg>
   );
 }
@@ -128,51 +125,51 @@ const features: {
   {
     Icon: ReceiptScanIcon,
     title: "Scan receipts in seconds",
-    description: "Snap, OCR, auto-categorise.",
+    description: "Snap a photo. Sorted reads the shop, date and amount, and picks a category.",
     tone: "teal",
+  },
+  {
+    Icon: SendIcon,
+    title: "Invoices clients pay by card",
+    description: "Every invoice gets a payment link. When your client pays, Sorted marks it paid.",
+    tone: "gold",
+  },
+  {
+    Icon: PoundIcon,
+    title: "Know what to put aside",
+    description: "A live tax estimate from your income, expenses and mileage. An estimate to plan with.",
+    tone: "coral",
+  },
+  {
+    Icon: RouteIcon,
+    title: "Mileage at HMRC rates",
+    description: "Log trips yourself, or let GPS record them in the background (beta).",
+    tone: "amber",
   },
   {
     Icon: AtSignIcon,
     title: "Email receipts straight in",
     description:
-      "Forward online receipts to your unique Sorted alias and they appear in your account.",
-    tone: "amber",
-  },
-  {
-    Icon: RouteIcon,
-    title: "Track income & mileage",
-    description: "Including HMRC-rate mileage logs.",
-    tone: "coral",
-  },
-  {
-    Icon: SendIcon,
-    title: "Send invoices (one-off or recurring)",
-    description: "Auto-send, with Stripe payments built in.",
-    tone: "gold",
+      "Forward online receipts to your own Sorted address and they land in your account. On Pro.",
+    tone: "teal",
   },
   {
     Icon: CalendarIcon,
     title: "UK tax year, done right",
     description: "Uses the receipt date (6 Apr\u20135 Apr), not today.",
-    tone: "teal",
+    tone: "gold",
   },
   {
     Icon: BarChartIcon,
-    title: "Profit & loss reports",
-    description: "Anytime, in seconds.",
-    tone: "amber",
-  },
-  {
-    Icon: FileTextIcon,
-    title: "Year-end accountant pack",
-    description: "One PDF, emailed straight to your accountant.",
+    title: "Reports for your accountant",
+    description: "Profit & loss any time. On Pro, a tax summary PDF emailed in one tap.",
     tone: "coral",
   },
   {
     Icon: VaultIcon,
-    title: "Vault",
-    description: "Keep contracts, IDs and certificates safe in-app.",
-    tone: "gold",
+    title: "Every receipt, kept",
+    description: "Photos and details in your Vault, easy to search when you need them.",
+    tone: "amber",
   },
 ];
 
@@ -203,14 +200,11 @@ const testimonials = [
   },
 ];
 
-function buildComparisonRows(monthlyPrice: string) {
+function buildComparisonRows() {
   return [
-  { label: "Monthly price", others: "£12\u201330", sorted: monthlyPrice },
-  { label: "Setup time", others: "30+ minutes", sorted: "Under 5 minutes" },
-  { label: "Receipt scanning", others: "Manual entry or paid add-on", sorted: "AI vision \u2014 3 second scan" },
-  { label: "Learning curve", others: "Needs training", sorted: "If you can take a photo, you\u2019re sorted" },
   { label: "Built for", others: "Businesses & accountants", sorted: "Self-employed humans" },
-  { label: "Making Tax Digital", others: "Files for you", sorted: "Exports ready for your accountant or MTD software" },
+  { label: "Learning curve", others: "Accounting know-how helps", sorted: "If you can take a photo, you\u2019re sorted" },
+  { label: "Making Tax Digital", others: "Some file for you", sorted: "Keeps the records; your accountant or MTD software files" },
   { label: "Friendly hedgehog", others: "No", sorted: "Obviously", highlight: true },
   ];
 }
@@ -285,7 +279,7 @@ function StopwatchIcon() {
 
 export default async function Home() {
   const pricing = await getPricing();
-  const comparisonRows = buildComparisonRows(pricing.monthlyPrice);
+  const comparisonRows = buildComparisonRows();
   return (
     <>
       {/* ─── HERO ─── */}
@@ -362,31 +356,42 @@ export default async function Home() {
         <div className="max-w-3xl mx-auto px-5 text-center">
           <FadeIn>
             <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest">
-              4.4 million people aren&apos;t ready
+              Making Tax Digital arrives in three steps
             </h2>
+            <p className="mt-3 text-smoke text-lg">
+              HMRC wants digital records and quarterly updates once your qualifying income passes:
+            </p>
           </FadeIn>
 
           <FadeIn className="mt-12 grid grid-cols-1 sm:grid-cols-3 gap-8">
             <div>
-              <p className="font-mono text-5xl font-bold text-coral">4.4m</p>
-              <p className="mt-2 text-charcoal/70">self-employed people affected</p>
+              <p className="font-mono text-5xl font-bold text-coral">£50k</p>
+              <p className="mt-2 text-charcoal/70">from 6 April 2026</p>
             </div>
             <div>
-              <p className="font-mono text-5xl font-bold text-coral">67%</p>
-              <p className="mt-2 text-charcoal/70">still using spreadsheets or shoeboxes</p>
+              <p className="font-mono text-5xl font-bold text-coral">£30k</p>
+              <p className="mt-2 text-charcoal/70">from 6 April 2027</p>
             </div>
             <div>
-              <p className="font-mono text-5xl font-bold text-coral">£1,000+</p>
-              <p className="mt-2 text-charcoal/70">penalty for non-compliance</p>
+              <p className="font-mono text-5xl font-bold text-coral">£20k</p>
+              <p className="mt-2 text-charcoal/70">from 6 April 2028</p>
             </div>
           </FadeIn>
 
           <FadeIn className="mt-10">
             <p className="text-lg text-charcoal/70 leading-relaxed">
-              Making Tax Digital (MTD) means HMRC now wants digital records and
-              quarterly updates from self-employed people with income (turnover)
-              over £50k — dropping to £30k in April 2027 and £20k in April 2028.
-              The old way of doing things is officially over.
+              Qualifying income is your income from self-employment and property
+              before expenses, and HMRC uses an earlier tax year&apos;s figure:
+              2024 to 2025 decides April 2026.{" "}
+              <a
+                href="https://www.gov.uk/guidance/find-out-if-and-when-you-need-to-use-making-tax-digital-for-income-tax"
+                target="_blank"
+                rel="noopener"
+                className="text-teal underline hover:text-teal/80"
+              >
+                Check if and when it applies to you on GOV.UK
+              </a>
+              .
             </p>
             <p className="mt-6 text-forest font-medium text-lg">
               Sorted keeps the digital records — your accountant or MTD software sends the updates.
@@ -441,26 +446,26 @@ export default async function Home() {
             </h2>
             <div className="mt-6 space-y-4 text-cream text-lg leading-relaxed">
               <p>
-                Most expense apps make you type everything in manually. Sorted
-                uses AI vision to read your receipts instantly.
+                Most expense apps make you type everything in. Sorted uses AI
+                to read your receipts for you.
               </p>
               <p>
-                Snap a photo of any receipt — crumpled, faded, coffee-stained —
-                and Sorted extracts:
+                Snap a photo of a receipt, even a crumpled or faded one, and
+                Sorted picks out:
               </p>
             </div>
 
             <ScannerChecklist />
 
             <p className="text-cream text-lg leading-relaxed">
-              All in under 3 seconds. No typing. No manual entry. No excuses
-              for losing receipts ever again.
+              No typing, and no more lost receipts. You check it over and tap
+              save.
             </p>
 
             <div className="mt-8 inline-flex items-center gap-3 bg-teal rounded-xl px-5 py-3">
               <StopwatchIcon />
               <span className="text-white font-medium">
-                Average time to log an expense: <strong>3 seconds</strong>
+                Most receipts are read in <strong>a few seconds</strong>
               </span>
             </div>
           </div>
@@ -474,21 +479,25 @@ export default async function Home() {
                 <div className="absolute inset-x-0 top-0 bottom-0 overflow-hidden rounded-xl pointer-events-none">
                   <div className="absolute left-0 right-0 h-0.5 bg-gold/80 animate-scan-line" />
                 </div>
-                <p className="text-charcoal font-bold text-lg">Costa Coffee</p>
-                <p className="text-smoke text-sm mt-1">20 Mar 2026</p>
+                <p className="text-charcoal font-bold text-lg">Screwfix</p>
+                <p className="text-smoke text-sm mt-1">25 Oct 2026</p>
                 <div className="mt-4 space-y-2 text-charcoal text-sm">
                   <div className="flex justify-between">
-                    <span>Flat White</span>
-                    <span>£3.40</span>
+                    <span>Wood screws x2</span>
+                    <span>£8.98</span>
                   </div>
                   <div className="flex justify-between">
-                    <span>Blueberry Muffin</span>
-                    <span>£2.85</span>
+                    <span>Wall plugs</span>
+                    <span>£3.49</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span>Drill bit set</span>
+                    <span>£12.52</span>
                   </div>
                 </div>
                 <div className="mt-4 pt-3 border-t-2 border-dashed border-smoke/30 flex justify-between items-baseline">
                   <span className="text-smoke text-sm font-medium">Total</span>
-                  <span className="text-forest font-bold text-xl">£6.25</span>
+                  <span className="text-forest font-bold text-xl">£24.99</span>
                 </div>
               </div>
 
@@ -511,10 +520,10 @@ export default async function Home() {
                   <span className="text-gold">✓</span> Expense logged
                 </p>
                 <p className="text-white/80 text-sm mt-1">
-                  Costa Coffee · £6.25 · Food &amp; Drink
+                  Screwfix · £24.99 · Tools &amp; equipment
                 </p>
-                <p className="text-gold font-mono font-bold mt-2">
-                  Tax saved: £1.25
+                <p className="text-gold font-bold mt-2">
+                  Tax estimate updated
                 </p>
               </div>
             </div>
@@ -634,7 +643,7 @@ export default async function Home() {
               <div className="bg-white border-2 border-teal rounded-2xl shadow-xl p-7 flex flex-col relative">
                 <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
                   <span className="bg-teal text-white text-xs font-bold px-4 py-1.5 rounded-full shadow-md">
-                    Most Popular
+                    {pricing.trialDays}-day free trial
                   </span>
                 </div>
                 <p className="text-teal font-semibold text-sm tracking-wide uppercase mt-1">

@@ -9,12 +9,12 @@ const faqs = [
   {
     question: "How do I scan a receipt?",
     answer:
-      "Tap Scan on the home screen, point your camera at the receipt, and Hedgie reads it in 3 seconds — merchant, amount, category, all done.",
+      "Tap Scan on the home screen and point your camera at the receipt. Hedgie reads the shop, date, amount and category in a few seconds. Check the details and tap Save.",
   },
   {
     question: "How do I create an invoice?",
     answer:
-      "Tap New Invoice, describe what you did and how much to charge. Hedgie writes a professional invoice for you — just hit send.",
+      "Tap Invoice on the home screen and describe what you did and how much to charge. Hedgie fills in the invoice for you. Check it over and send it, with a link your client can pay by card.",
   },
   {
     question: "How accurate is the tax estimate?",
@@ -24,17 +24,17 @@ const faqs = [
   {
     question: "Can I cancel anytime?",
     answer:
-      "Yes. One tap in Settings > Subscription. No cancellation fees, no phone calls needed. You keep access until the end of your billing period.",
+      "Yes. Subscriptions are handled by the App Store or Google Play: in Sorted, go to Settings > Subscription and tap Manage subscription to open them. No cancellation fees, and you keep Pro until the end of the period you’ve paid for.",
   },
   {
     question: "Is my data safe?",
     answer:
-      "All data is encrypted in transit and at rest, stored securely on EU-based servers with row-level security. We never share your financial data with anyone.",
+      "Your data is encrypted in transit and at rest, stored on EU-region servers, and locked to your account. We never sell it. It’s only shared with the services that run Sorted, such as Anthropic, which reads receipt images; our privacy policy lists them all.",
   },
   {
     question: "How do I export my data for my accountant?",
     answer:
-      "Go to Settings > Export Data to generate a CSV for the current tax year. You can share it directly with your accountant.",
+      "In Settings you can export a profit & loss report, your mileage log, or a ZIP of all your records, and share it with your accountant. On Pro you can also email them a tax summary PDF in one tap.",
   },
 ];
 

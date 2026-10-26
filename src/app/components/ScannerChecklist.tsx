@@ -7,7 +7,7 @@ const items = [
   "Amount",
   "Date",
   "Category (auto-detected)",
-  "Tax saving (calculated instantly)",
+  "Your tax estimate, updated",
 ];
 
 export default function ScannerChecklist() {
