@@ -6,7 +6,7 @@ import Image from "next/image";
 const phones = [
   {
     src: "/images/app-receipt-scan.webp",
-    alt: "Sorted ‘Add Receipt’ screen on iPhone, with options to pick a photo from library, use the camera, or enter a receipt manually.",
+    alt: "Sorted ‘Confirm Details’ screen on iPhone after scanning a Robert Dyas receipt, with merchant, amount of £25.97 and date filled in, and Hedgie saying ‘Got it: Robert Dyas, £25.97. Check it over!’",
     label: "Scan receipts",
   },
   {
@@ -15,23 +15,28 @@ const phones = [
     label: "Dashboard",
   },
   {
+    src: "/images/app-invoices.webp",
+    alt: "Sorted Invoices screen on iPhone, showing £662.00 invoiced this tax year, £1.00 outstanding, and a list of sent and paid invoices.",
+    label: "Invoices",
+  },
+  {
     src: "/images/app-email-receipts.webp",
     alt: "Sorted settings screen on iPhone, showing the user’s unique mysorted.app email alias for forwarding online receipts.",
     label: "Email receipts in",
   },
   {
     src: "/images/app-pl-report.webp",
-    alt: "Sorted P&L Report screen on iPhone, with tax-year selector, income, expenses, net profit and an estimated tax owed of £4,209.18, plus a Generate PDF Report button.",
+    alt: "Sorted P&L Report screen on iPhone, with tax-year selector, income of £3,212.00, expenses of £105.56, net profit, estimated tax owed, income by client, and a Generate PDF Report button.",
     label: "P&L report",
   },
   {
     src: "/images/app-accountant-pack.webp",
-    alt: "Sorted settings screen on iPhone, showing Generate P&L Report, Tax Summary Report, Export All Data and a Share with Accountant option.",
+    alt: "Sorted Data & Export settings on iPhone, showing Generate P&L Report, Business Mileage Log, Tax Summary Report, Export All Data, and an Email to my accountant form for sending a tax pack.",
     label: "Accountant pack",
   },
   {
     src: "/images/app-vault.webp",
-    alt: "Sorted Vault screen on iPhone, showing total expenses of £148.80, tax saved of £29.76, and a list of categorised receipts from Tesco, Boots and Costa Coffee.",
+    alt: "Sorted Vault screen on iPhone, showing expenses of £105.56 for 2026/27 across 3 receipts, with categorised receipts from Pizza Pilgrims and Sainsbury’s.",
     label: "Vault",
   },
 ];
