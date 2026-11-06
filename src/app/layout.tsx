@@ -3,6 +3,7 @@ import { Nunito, Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { Analytics } from "@vercel/analytics/next";
 
 const nunito = Nunito({
   variable: "--font-nunito",
@@ -46,6 +47,8 @@ export default function RootLayout({
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
+        {/* Page views and referrers; Analytics must also be on in the Vercel dashboard */}
+        <Analytics />
       </body>
     </html>
   );

@@ -116,3 +116,82 @@ body {
 .no-scrollbar::-webkit-scrollbar {
   display: none;
 }
+
+/* Guide and tool pages: plain readable text without a typography plugin */
+.guide-body {
+  font-size: 1.0625rem;
+  line-height: 1.75;
+}
+.guide-body h2 {
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  font-size: 1.625rem;
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-forest);
+  margin: 2.5rem 0 1rem;
+}
+.guide-body h3 {
+  font-family: var(--font-nunito), system-ui, sans-serif;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--color-forest);
+  margin: 1.75rem 0 0.5rem;
+}
+.guide-body p {
+  margin: 0 0 1rem;
+}
+.guide-body ul,
+.guide-body ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.4rem;
+}
+.guide-body ul {
+  list-style: disc;
+}
+.guide-body ol {
+  list-style: decimal;
+}
+.guide-body li {
+  margin-bottom: 0.4rem;
+}
+.guide-body a {
+  color: var(--color-teal);
+  text-decoration: underline;
+}
+.guide-body strong {
+  color: var(--color-forest);
+}
+.guide-body .table-wrap {
+  overflow-x: auto;
+  margin: 0 0 1.5rem;
+  border-radius: 1rem;
+  border: 1px solid rgb(45 107 94 / 0.1);
+  background: #fff;
+}
+.guide-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.975rem;
+}
+.guide-body th,
+.guide-body td {
+  text-align: left;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid rgb(45 107 94 / 0.08);
+  vertical-align: top;
+}
+.guide-body th {
+  font-weight: 600;
+  color: var(--color-forest);
+  background: var(--color-mint);
+}
+.guide-body tr:last-child td {
+  border-bottom: none;
+}
+.guide-body .callout {
+  border-left: 4px solid var(--color-teal);
+  background: #fff;
+  border-radius: 0 1rem 1rem 0;
+  padding: 1rem 1.25rem;
+  margin: 0 0 1.5rem;
+}
