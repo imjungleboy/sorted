@@ -8,12 +8,31 @@ const intro =
   "Your 2025/26 tax return covers 6 April 2025 to 5 April 2026. Here is every date that matters, what happens if you miss one, and what to do this week.";
 
 export const metadata: Metadata = {
-  title: "Self Assessment deadline 31 January 2027 (2025/26 tax return) — Sorted",
+  title: "Self Assessment deadline 31 January 2027 — Sorted",
   description:
-    "Key dates for the 2025/26 Self Assessment tax return: file online and pay by 31 January 2027. Payments on account, late filing penalties and a checklist for sole traders.",
+    "Self Assessment deadline for 2025/26: file online and pay by 31 January 2027. Payments on account, late penalties and a checklist for sole traders.",
   alternates: { canonical: path },
   openGraph: { title, description: intro, url: path, type: "article" },
 };
+
+const faqs = [
+  {
+    q: "When is the Self Assessment deadline?",
+    a: "For the 2025/26 tax year, the online tax return and the tax you owe are both due by 11:59pm on 31 January 2027. Paper returns were due by 31 October 2026.",
+  },
+  {
+    q: "What happens if I miss the Self Assessment deadline?",
+    a: "You get a £100 penalty straight away, even if you owe no tax. After 3 months it's £10 a day up to £900, with more penalties at 6 and 12 months. Paying late adds 5% penalties and interest.",
+  },
+  {
+    q: "When do I need to register for Self Assessment?",
+    a: "By 5 October after the end of the tax year you first need to file for. For the 2025/26 tax year that was 5 October 2026: if you've missed it, register as soon as you can.",
+  },
+  {
+    q: "What is a payment on account?",
+    a: "An advance payment towards next year's tax: half of last year's bill on 31 January and half on 31 July. You usually don't make them if last year's bill was under £1,000.",
+  },
+];
 
 export default function SelfAssessmentDeadlinePage() {
   return (
@@ -21,6 +40,7 @@ export default function SelfAssessmentDeadlinePage() {
       path={path}
       title={title}
       intro={intro}
+      faqs={faqs}
       sources={[
         {
           label: "gov.uk: Self Assessment tax returns — deadlines",

@@ -3,14 +3,14 @@ import Link from "next/link";
 import GuideLayout from "../../components/GuideLayout";
 
 const path = "/guides/sole-trader-allowable-expenses";
-const title = "What expenses can a sole trader claim?";
+const title = "Sole trader expenses list: what can I claim?";
 const intro =
   "Every allowable expense lowers the profit you pay tax on. Here is what HMRC lets you claim, what it doesn't, and the flat rates that save you keeping every bill.";
 
 export const metadata: Metadata = {
-  title: "Sole trader allowable expenses UK: what you can claim — Sorted",
+  title: "Sole trader expenses list UK: what can I claim? — Sorted",
   description:
-    "A plain-English list of allowable expenses for UK sole traders: office, travel, clothing, insurance, training and more. Plus simplified expenses for mileage and working from home, and what you can't claim.",
+    "Sole trader expenses list for the UK: what self-employed people can claim, what they can't, and HMRC's flat rates for mileage and working from home.",
   alternates: { canonical: path },
   openGraph: { title, description: intro, url: path, type: "article" },
 };
@@ -28,12 +28,36 @@ const categories: { name: string; examples: string }[] = [
   { name: "Training", examples: "Courses that refresh skills you already use in your business" },
 ];
 
+const faqs = [
+  {
+    q: "What expenses can I claim as a sole trader?",
+    a: "Costs you have only for your business: office costs, business travel, uniforms and protective clothing, staff, stock, insurance and bank charges, business premises, advertising, professional subscriptions and training that refreshes skills you already use.",
+  },
+  {
+    q: "Can I claim my phone bill as self-employed?",
+    a: "You can claim the business share. If you use one phone for work and personal calls, work out the proportion used for business and claim that part.",
+  },
+  {
+    q: "Can I claim clothes I wear for work?",
+    a: "Only uniforms, protective clothing and specialist clothing that isn't everyday wear. Everyday clothes such as suits, shirts or ordinary shoes can't be claimed, even if you only wear them for work.",
+  },
+  {
+    q: "Should I use the £1,000 trading allowance or claim expenses?",
+    a: "Claim expenses if they add up to more than £1,000. Use the trading allowance if your real costs are lower. You can't do both.",
+  },
+  {
+    q: "Do I need to keep receipts for expenses?",
+    a: "Yes. Keep records of what you claim for at least 5 years after the 31 January deadline for that tax year. You can keep them on paper or digitally.",
+  },
+];
+
 export default function AllowableExpensesPage() {
   return (
     <GuideLayout
       path={path}
       title={title}
       intro={intro}
+      faqs={faqs}
       sources={[
         {
           label: "gov.uk: Expenses if you're self-employed",
@@ -55,7 +79,7 @@ export default function AllowableExpensesPage() {
     >
       <h2>The rule in one line</h2>
       <p>
-        You can claim costs you have <strong>only for your business</strong>.
+        You can claim costs you have{" "}<strong>only for your business</strong>.
         If something is used for business and personal life, like your phone,
         you can only claim the business share.
       </p>

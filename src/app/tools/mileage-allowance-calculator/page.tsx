@@ -9,12 +9,31 @@ const intro =
   "Enter your business miles and get your claim at HMRC's flat rates: 55p a mile for cars and vans in 2026/27, 45p for 2025/26.";
 
 export const metadata: Metadata = {
-  title: "Mileage allowance calculator 2026/27 (55p a mile) for sole traders — Sorted",
+  title: "Mileage allowance calculator 2026/27 (55p a mile) — Sorted",
   description:
-    "Free UK mileage allowance calculator for self-employed sole traders. HMRC simplified expenses: 55p a mile for the first 10,000 miles in 2026/27 (45p in 2025/26), then 25p. Motorcycles 24p.",
+    "Free mileage allowance calculator for UK sole traders. HMRC rates: 55p a mile for the first 10,000 miles in 2026/27 (45p in 2025/26), then 25p.",
   alternates: { canonical: path },
   openGraph: { title, description: intro, url: path, type: "website" },
 };
+
+const faqs = [
+  {
+    q: "What is the HMRC mileage rate for 2026/27?",
+    a: "For the self-employed using simplified expenses: 55p a mile for the first 10,000 business miles in a car or van, then 25p. Motorcycles are 24p a mile. Before 6 April 2026 the car and van rate was 45p.",
+  },
+  {
+    q: "Can I claim mileage and fuel as self-employed?",
+    a: "Not for the same vehicle. The flat mileage rate covers fuel, insurance, repairs and servicing. You can still claim parking and train or bus fares on top.",
+  },
+  {
+    q: "Does the 10,000-mile limit apply to each car?",
+    a: "No. The 10,000 miles counts business miles across all your cars and vans together in the tax year.",
+  },
+  {
+    q: "What records do I need for a mileage claim?",
+    a: "A log of each business journey: the date, where you went, why, and the miles. HMRC can ask how you worked out your claim.",
+  },
+];
 
 export default function MileageCalculatorPage() {
   return (
@@ -22,6 +41,7 @@ export default function MileageCalculatorPage() {
       path={path}
       title={title}
       intro={intro}
+      faqs={faqs}
       sources={[
         {
           label: "gov.uk: Simplified expenses — vehicles",

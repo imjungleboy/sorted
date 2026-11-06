@@ -10,10 +10,29 @@ const intro =
 export const metadata: Metadata = {
   title: "Locum optometrist tax and expenses UK — Sorted",
   description:
-    "What self-employed locum optometrists in the UK can claim: GOC registration, indemnity insurance, CPD, equipment, mileage and more. Plus what you can't claim and the 31 January deadline.",
+    "What UK locum optometrists can claim: GOC registration, indemnity insurance, CPD, equipment and mileage. Plus what you can't claim and key deadlines.",
   alternates: { canonical: path },
   openGraph: { title, description: intro, url: path, type: "article" },
 };
+
+const faqs = [
+  {
+    q: "Are locum optometrists self-employed?",
+    a: "Most are, and file a Self Assessment tax return each year. Your status depends on how you actually work, so use HMRC's employment status check if you're unsure.",
+  },
+  {
+    q: "Can a locum optometrist claim the GOC fee?",
+    a: "Yes. You need GOC registration to practise, so the fee is a business cost for a self-employed optometrist.",
+  },
+  {
+    q: "Can I claim equipment like an ophthalmoscope?",
+    a: "Yes. Under the cash basis, the standard method for sole traders, equipment you buy for work is claimed as a normal expense in the year you pay for it.",
+  },
+  {
+    q: "Can I claim mileage to the practices I locum at?",
+    a: "Travel between home and work can't be claimed, but many locums who cover a different practice most days work from home as their business base. It depends on your pattern of work, so check with an accountant and log every trip.",
+  },
+];
 
 export default function LocumOptometristTaxPage() {
   return (
@@ -21,6 +40,7 @@ export default function LocumOptometristTaxPage() {
       path={path}
       title={title}
       intro={intro}
+      faqs={faqs}
       sources={[
         {
           label: "gov.uk: Expenses if you're self-employed",
@@ -78,8 +98,9 @@ export default function LocumOptometristTaxPage() {
           bookings and calls.
         </li>
         <li>
-          <strong>Accountant&apos;s fees</strong> for your business accounts
-          and tax return.
+          <strong>Accountant&apos;s fees</strong>{" "}for your business accounts.
+          The cost of preparing your Self Assessment return itself can&apos;t
+          be claimed.
         </li>
         <li>
           <strong>Clinical tunics or uniforms</strong>{" "}that aren&apos;t
