@@ -1,14 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import DownloadCta from "../components/DownloadCta";
-import { guides } from "./guides";
+import { CATEGORY_HEADINGS, guides, type GuideCategory } from "./guides";
 
 export const metadata: Metadata = {
-  title: "Guides for UK sole traders: tax, expenses and mileage — Sorted",
+  title: "Tax guides and calculators for UK sole traders — Sorted",
   description:
-    "Plain-English guides for UK self-employed people: the Self Assessment deadline, allowable expenses, a mileage allowance calculator and tax for locum optometrists.",
+    "Plain-English guides and free calculators for UK self-employed people: tax, National Insurance, expenses, mileage, the Self Assessment deadline and tax by job.",
   alternates: { canonical: "/guides" },
 };
+
+const ORDER: GuideCategory[] = ["tool", "guide", "job", "app"];
 
 export default function GuidesPage() {
   return (
@@ -21,21 +23,30 @@ export default function GuidesPage() {
           Tax, expenses and mileage for UK self-employed people, in plain
           English and checked against gov.uk.
         </p>
-        <ul className="grid gap-4">
-          {guides.map((g) => (
-            <li key={g.href}>
-              <Link
-                href={g.href}
-                className="block rounded-2xl bg-white border border-forest/5 shadow-sm p-6 hover:border-teal/40 transition-colors"
-              >
-                <h2 className="font-[family-name:var(--font-nunito)] text-xl font-bold text-forest">
-                  {g.title}
-                </h2>
-                <p className="mt-1 text-charcoal/70">{g.summary}</p>
-              </Link>
-            </li>
-          ))}
-        </ul>
+        {ORDER.map((category) => (
+          <section key={category} className="mb-12">
+            <h2 className="font-[family-name:var(--font-nunito)] text-2xl font-bold text-forest mb-4">
+              {CATEGORY_HEADINGS[category]}
+            </h2>
+            <ul className="grid gap-3 md:grid-cols-2">
+              {guides
+                .filter((g) => g.category === category)
+                .map((g) => (
+                  <li key={g.href}>
+                    <Link
+                      href={g.href}
+                      className="block h-full rounded-2xl bg-white border border-forest/5 shadow-sm p-5 hover:border-teal/40 transition-colors"
+                    >
+                      <span className="font-[family-name:var(--font-nunito)] text-lg font-bold text-forest">
+                        {g.title}
+                      </span>
+                      <span className="block mt-1 text-sm text-charcoal/70">{g.summary}</span>
+                    </Link>
+                  </li>
+                ))}
+            </ul>
+          </section>
+        ))}
       </div>
       <DownloadCta />
     </>

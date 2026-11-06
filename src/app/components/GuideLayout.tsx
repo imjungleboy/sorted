@@ -3,22 +3,42 @@ import DownloadCta from "./DownloadCta";
 import { guides, LAST_CHECKED, SITE_URL } from "../guides/guides";
 
 export type Source = { label: string; url: string };
+export type Faq = { q: string; a: string };
+
+// What search engines and AI assistants read about the app itself. Prices
+// are left out on purpose: they live in the App Store listing and change.
+const APP_SCHEMA = {
+  "@type": "MobileApplication",
+  name: "Sorted",
+  operatingSystem: "iOS, Android",
+  applicationCategory: "FinanceApplication",
+  description:
+    "Bookkeeping app for UK sole traders: scan receipts, send invoices, track mileage and see a live tax estimate.",
+  url: SITE_URL,
+  offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
+  publisher: { "@type": "Organization", name: "MySorted Ltd", url: SITE_URL },
+};
 
 // Shared frame for every guide and tool page: breadcrumb, heading, intro,
-// the page's own content, gov.uk sources, a plain disclaimer, links to the
-// other guides and the download buttons. It also adds Article structured
-// data so search engines know what the page is and when it was checked.
+// the page's own content, FAQs, gov.uk sources, a plain disclaimer, related
+// guides and the download buttons. It also adds structured data (Article,
+// FAQPage and, on app pages, MobileApplication) so search engines and AI
+// assistants know what the page is and when it was checked.
 export default function GuideLayout({
   path,
   title,
   intro,
   sources,
+  faqs = [],
+  isAppPage = false,
   children,
 }: {
   path: string;
   title: string;
   intro: string;
   sources: Source[];
+  faqs?: Faq[];
+  isAppPage?: boolean;
   children: React.ReactNode;
 }) {
   const checked = new Date(LAST_CHECKED).toLocaleDateString("en-GB", {
@@ -27,18 +47,37 @@ export default function GuideLayout({
     year: "numeric",
   });
 
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Article",
-    headline: title,
-    description: intro,
-    url: `${SITE_URL}${path}`,
-    dateModified: LAST_CHECKED,
-    inLanguage: "en-GB",
-    publisher: { "@type": "Organization", name: "MySorted Ltd", url: SITE_URL },
-  };
+  const graph: object[] = [
+    {
+      "@type": "Article",
+      headline: title,
+      description: intro,
+      url: `${SITE_URL}${path}`,
+      dateModified: LAST_CHECKED,
+      inLanguage: "en-GB",
+      publisher: { "@type": "Organization", name: "MySorted Ltd", url: SITE_URL },
+    },
+  ];
+  if (faqs.length > 0) {
+    graph.push({
+      "@type": "FAQPage",
+      mainEntity: faqs.map((f) => ({
+        "@type": "Question",
+        name: f.q,
+        acceptedAnswer: { "@type": "Answer", text: f.a },
+      })),
+    });
+  }
+  if (isAppPage) graph.push(APP_SCHEMA);
+  const structuredData = { "@context": "https://schema.org", "@graph": graph };
 
-  const otherGuides = guides.filter((g) => g.href !== path);
+  // Up to four related pages: same kind of page first, then the most useful.
+  const here = guides.find((g) => g.href === path);
+  const others = guides.filter((g) => g.href !== path);
+  const otherGuides = [
+    ...others.filter((g) => g.category === here?.category),
+    ...others.filter((g) => g.category !== here?.category),
+  ].slice(0, 4);
 
   return (
     <>
@@ -68,6 +107,27 @@ export default function GuideLayout({
         </p>
 
         <div className="guide-body">{children}</div>
+
+        {faqs.length > 0 && (
+          <section className="mt-12">
+            <h2 className="font-[family-name:var(--font-nunito)] text-2xl font-bold text-forest mb-4">
+              Questions people ask
+            </h2>
+            <div className="space-y-3">
+              {faqs.map((f) => (
+                <details
+                  key={f.q}
+                  className="group rounded-2xl bg-white border border-forest/5 shadow-sm"
+                >
+                  <summary className="cursor-pointer px-6 py-4 font-[family-name:var(--font-nunito)] font-semibold text-forest">
+                    {f.q}
+                  </summary>
+                  <p className="px-6 pb-5 text-charcoal/80 leading-relaxed">{f.a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mt-12 rounded-2xl bg-white border border-forest/5 p-6">
           <h2 className="font-[family-name:var(--font-nunito)] text-lg font-bold text-forest mb-3">

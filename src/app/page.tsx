@@ -269,8 +269,26 @@ function StopwatchIcon() {
 export default async function Home() {
   const pricing = await getPricing();
   const comparisonRows = buildComparisonRows();
+  // Tells search engines and AI assistants what Sorted is. Prices stay in
+  // the App Store listing; only the free plan is stated here.
+  const appSchema = {
+    "@context": "https://schema.org",
+    "@type": "MobileApplication",
+    name: "Sorted",
+    operatingSystem: "iOS, Android",
+    applicationCategory: "FinanceApplication",
+    description:
+      "Bookkeeping app for UK sole traders: scan receipts, send invoices, track mileage and see a live tax estimate.",
+    url: "https://mysorted.app",
+    offers: { "@type": "Offer", price: "0", priceCurrency: "GBP" },
+    publisher: { "@type": "Organization", name: "MySorted Ltd", url: "https://mysorted.app" },
+  };
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }}
+      />
       {/* ─── HERO ─── */}
       <section className="min-h-[calc(100svh-5rem)] flex items-center bg-cloud relative overflow-hidden">
         <div className="absolute top-20 -right-32 w-96 h-96 rounded-full bg-mint/40 blur-3xl" />
