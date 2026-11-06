@@ -4,6 +4,10 @@ import PhoneCarousel from "./components/PhoneCarousel";
 import ScannerChecklist from "./components/ScannerChecklist";
 import HeroHedgie from "./components/HeroHedgie";
 import { getPricing } from "@/lib/pricing";
+import type { Metadata } from "next";
+import HomeFaq from "./components/HomeFaq";
+
+export const metadata: Metadata = { alternates: { canonical: "/" } };
 
 const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=app.mysorted.sorted";
@@ -137,7 +141,7 @@ const features: {
   {
     Icon: PoundIcon,
     title: "Know what to put aside",
-    description: "A live tax estimate from your income, expenses and mileage. An estimate to plan with.",
+    description: "A live self-employed tax estimate from your income, expenses and mileage. An estimate to plan with.",
     tone: "coral",
   },
   {
@@ -301,10 +305,10 @@ export default async function Home() {
               Now live on App Store &amp; Google Play
             </span>
             <h1 className="font-[family-name:var(--font-nunito)] text-4xl md:text-6xl font-bold text-forest leading-[1.1] tracking-tight">
-              Sole-trader bookkeeping that actually feels sorted.
+              Bookkeeping for sole traders that actually feels sorted.
             </h1>
             <p className="mt-4 md:mt-5 text-base md:text-xl text-charcoal/70 leading-relaxed max-w-2xl">
-              Scan receipts &rarr; log income &rarr; year-end pack for your accountant.
+              Scan receipts &rarr; log income and mileage &rarr; see your tax &rarr; year-end pack for your accountant.
             </p>
             <div className="mt-6 md:mt-8 flex flex-row flex-wrap justify-center md:justify-start items-center gap-3">
               <a
@@ -412,7 +416,7 @@ export default async function Home() {
         <div className="max-w-6xl mx-auto px-5">
           <FadeIn className="text-center mb-14">
             <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest">
-              Everything you need to stay sorted
+              Everything a sole trader needs to stay sorted
             </h2>
             <p className="mt-3 text-smoke text-lg">
               No jargon. No spreadsheets. No accountant required.
@@ -453,8 +457,8 @@ export default async function Home() {
             </h2>
             <div className="mt-6 space-y-4 text-cream text-lg leading-relaxed">
               <p>
-                Most expense apps make you type everything in. Sorted uses AI
-                to read your receipts for you.
+                Most expense apps make you type everything in. Sorted&apos;s
+                receipt scanner uses AI to read your receipts for you.
               </p>
               <p>
                 Snap a photo of a receipt, even a crumpled or faded one, and
@@ -746,6 +750,8 @@ export default async function Home() {
           </FadeIn>
         </div>
       </section>
+
+      <HomeFaq />
 
       {/* ─── FINAL CTA ─── */}
       <section id="download" className="bg-forest py-20 md:py-28 relative overflow-hidden">
