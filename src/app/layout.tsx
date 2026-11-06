@@ -17,16 +17,18 @@ const inter = Inter({
   weight: ["400", "500", "600"],
 });
 
+// Worded for what people search (docs/seo/keyword-map.csv): "bookkeeping
+// app", "receipt scanner app", "self employed tax", "mileage".
 const description =
-  "Scan receipts. Send invoices. Know what you owe. The simplest way for UK self-employed people to track expenses and estimate tax.";
+  "Bookkeeping app for UK sole traders: scan receipts, send invoices, track mileage at HMRC rates and see your self-employed tax as you go. Free to start.";
 
 export const metadata: Metadata = {
   // Link previews (opengraph-image.png) need absolute URLs.
   metadataBase: new URL("https://mysorted.app"),
-  title: "Sorted — The anti-accounting app for UK freelancers",
+  title: "Sorted — receipt scanner and bookkeeping app for sole traders",
   description,
   openGraph: {
-    title: "Sorted — bookkeeping for UK sole traders",
+    title: "Sorted — bookkeeping app for UK sole traders",
     description,
     url: "https://mysorted.app",
     siteName: "Sorted",
