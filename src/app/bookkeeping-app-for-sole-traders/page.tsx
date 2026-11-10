@@ -23,7 +23,7 @@ const rows: Row[] = [
   {
     app: "Sorted",
     plans:
-      "Free plan: 30 receipts and 3 invoices a month, unlimited mileage. Sorted Pro for unlimited receipts and invoices.",
+      "Free plan: 30 receipts, 3 invoices and 10 mileage trips a month. Sorted Pro for unlimited receipts, invoices and mileage.",
     files: "No. Keeps your records and estimates your tax; you or your accountant file.",
     capture: "Reads receipt photos. Mileage by GPS at HMRC's rate.",
     bank: "No",
@@ -108,7 +108,7 @@ export default function BookkeepingAppPage() {
         },
         {
           q: "Is there a free bookkeeping app for the self-employed?",
-          a: "Sorted has a free plan with 30 receipts and 3 invoices a month, unlimited mileage tracking and a live tax estimate. FreeAgent says its sole trader plan is £0 if you bank with NatWest, RBS or Ulster Bank, or use Mettle with at least one transaction a month.",
+          a: "Sorted has a free plan with 30 receipts and 3 invoices a month, mileage tracking for 10 trips a month and a live tax estimate. FreeAgent says its sole trader plan is £0 if you bank with NatWest, RBS or Ulster Bank, or use Mettle with at least one transaction a month.",
         },
         {
           q: "Does Sorted file my tax return?",

@@ -94,7 +94,7 @@ export default function ReceiptScannerAppPage() {
         },
         {
           q: "Is there a free receipt scanner app?",
-          a: "Sorted's free plan lets you scan 30 receipts a month, with unlimited mileage tracking and a live tax estimate. Sorted Pro removes the receipt limit and lets you email receipts straight in.",
+          a: "Sorted's free plan lets you scan 30 receipts a month, with mileage tracking for 10 trips a month and a live tax estimate. Sorted Pro removes the receipt and mileage limits and lets you email receipts straight in.",
         },
         {
           q: "Do I need to keep fuel receipts if I claim mileage?",

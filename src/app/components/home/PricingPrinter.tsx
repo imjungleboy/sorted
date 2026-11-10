@@ -17,7 +17,7 @@ const ROWS: Record<Plan, [string, string][]> = {
   free: [
     ["RECEIPTS", "30 / MONTH"],
     ["INVOICES", "3 / MONTH"],
-    ["MILEAGE TRACKING", "UNLIMITED"],
+    ["MILEAGE TRACKING", "10 TRIPS / MONTH"],
     ["TAX ESTIMATE", "LIVE"],
     ["P&L REPORT + EXPORT", "YES"],
     ["CARD FEE ON INVOICES", "1.5%"],
@@ -25,6 +25,7 @@ const ROWS: Record<Plan, [string, string][]> = {
   pro: [
     ["RECEIPT SCANNING", "UNLIMITED"],
     ["INVOICES + RECURRING", "UNLIMITED"],
+    ["MILEAGE TRACKING", "UNLIMITED"],
     ["EMAIL RECEIPTS IN", "YES"],
     ["TAX PDF + ACCOUNTANT PACK", "YES"],
     ["CARD FEE ON INVOICES", "0.5%"],

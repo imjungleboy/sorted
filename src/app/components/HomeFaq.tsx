@@ -26,7 +26,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Is Sorted free?",
-    a: "Yes, to start. The free plan includes 30 receipts and 3 invoices a month, unlimited mileage tracking and a live tax estimate. Sorted Pro removes the limits and adds the accountant pack.",
+    a: "Yes, to start. The free plan includes 30 receipts and 3 invoices a month, mileage tracking for 10 trips a month and a live tax estimate. Sorted Pro removes the limits and adds the accountant pack.",
   },
 ];
 
