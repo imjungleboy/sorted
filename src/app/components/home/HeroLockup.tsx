@@ -143,8 +143,9 @@ export default function HeroLockup() {
           </div>
         </div>
 
-        {/* The real headline (for search), what Sorted does, and the stores */}
-        <div className="fade-up flex w-full max-w-[1100px] flex-col items-center gap-5 text-center md:flex-row md:items-end md:justify-between md:text-left" style={{ animationDelay: `${tEnd + 150}ms` }}>
+        {/* The real headline (for search), what Sorted does, and the stores.
+            Shown almost at once; it doesn't wait for the lockup to finish. */}
+        <div className="fade-up flex w-full max-w-[1100px] flex-col items-center gap-5 text-center md:flex-row md:items-end md:justify-between md:text-left" style={{ animationDelay: "150ms" }}>
           <div className="flex max-w-[520px] flex-col gap-2">
             <h1 className="font-sans text-lg font-extrabold leading-snug text-forest md:text-xl">
               Bookkeeping for sole traders that actually feels sorted.
