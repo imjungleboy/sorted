@@ -150,7 +150,7 @@ export default function HeroLockup() {
 
         {/* The real headline (for search), what Sorted does, and the stores.
             Shown almost at once; it doesn't wait for the lockup to finish. */}
-        <div className="fade-up flex w-full max-w-[1100px] flex-col items-center gap-5 text-center md:flex-row md:items-end md:justify-between md:text-left" style={{ animationDelay: "150ms" }}>
+        <div className="fade-up flex w-full max-w-[1100px] flex-col items-center gap-5 text-center lg:flex-row lg:items-end lg:justify-between lg:text-left" style={{ animationDelay: "150ms" }}>
           <div className="flex max-w-[520px] flex-col gap-2">
             <h1 className="font-sans text-lg font-extrabold leading-snug text-forest md:text-xl">
               Bookkeeping for sole traders that actually feels sorted.
@@ -159,7 +159,7 @@ export default function HeroLockup() {
               Scan receipts → log income and mileage → see your tax → year-end pack for your accountant.
             </p>
           </div>
-          <div className="flex flex-col items-center gap-2 md:items-end">
+          <div className="flex flex-col items-center gap-2 lg:items-end">
             <div className="flex items-center gap-3">
               <a href={APP_STORE_URL} target="_blank" rel="noopener" aria-label="Download Sorted on the App Store" className="block transition-transform hover:scale-105">
                 <Image src="/images/app-store-badge.svg" alt="Download on the App Store" width={120} height={40} unoptimized loading="eager" className="h-11 w-auto" />
