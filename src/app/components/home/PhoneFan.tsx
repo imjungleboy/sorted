@@ -25,11 +25,14 @@ const layout = [
   { x: "410px", y: "46px", r: "13deg", s: ".86", z: 1, delay: "1.05s", sr: "3deg" },
 ];
 
+// The title is drawn twice (desktop stage and phone layout), so the big words
+// are hidden from screen readers here and the section's one real heading is
+// the sr-only h2 at the top.
 function Title() {
   return (
     <div className="flex flex-col gap-2.5">
       <span className="font-mono text-xs tracking-[.12em] text-teal">( WHAT THE APP DOES )</span>
-      <h2 className="font-display text-5xl leading-[.9] text-forest md:text-[84px]">SEE IT IN ACTION</h2>
+      <p aria-hidden className="font-display text-5xl leading-[.9] text-forest md:text-[84px]">SEE IT IN ACTION</p>
       <span className="font-mono text-xs tracking-wide text-smoke">REAL APP. REAL SIMPLE. NO ACCOUNTING DEGREE REQUIRED.</span>
     </div>
   );
@@ -63,7 +66,8 @@ export default function PhoneFan() {
   };
 
   return (
-    <section aria-label="See it in action" className="scroll-mt-20 border-t border-forest/10 bg-cloud">
+    <section aria-labelledby="see-it-in-action" className="scroll-mt-20 border-t border-forest/10 bg-cloud">
+      <h2 id="see-it-in-action" className="sr-only">See it in action</h2>
       {/* Desktop */}
       <div ref={ref} className="hidden lg:block">
         <ScaledStage width={1280} height={800}>

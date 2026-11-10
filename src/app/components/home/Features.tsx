@@ -23,7 +23,7 @@ const LockIcon = icon(<><rect width="18" height="11" x="3" y="11" rx="2" /><path
 type Tone = "paper" | "forest" | "sage";
 
 const features: { Icon: (p: IconProps) => React.ReactElement; title: string; description: string; tag?: string; tone: Tone; rot: string }[] = [
-  { Icon: ScanIcon, title: "Scan receipts in seconds", description: "Snap a photo. Sorted reads the shop, date and amount, and picks a category.", tone: "paper", rot: "-2deg" },
+  { Icon: ScanIcon, title: "Scan receipts in seconds", description: "Snap a photo. Sorted's receipt scanner reads the shop, date and amount, and picks a category.", tone: "paper", rot: "-2deg" },
   { Icon: SendIcon, title: "Invoices clients pay by card", description: "Every invoice gets a payment link. When your client pays, Sorted marks it paid.", tone: "paper", rot: "1.5deg" },
   { Icon: PoundIcon, title: "Know what to put aside", description: "A live self-employed tax estimate from your income, expenses and mileage. An estimate to plan with.", tone: "forest", rot: "-1deg" },
   { Icon: RouteIcon, title: "Mileage at HMRC rates", description: "Log trips yourself, or let GPS record them in the background (beta).", tone: "paper", rot: "2deg" },
