@@ -39,7 +39,7 @@ export default function Navbar() {
             <a
               key={l.href}
               href={l.href}
-              className="text-sm font-medium text-charcoal cursor-pointer hover:text-teal transition-colors"
+              className="font-mono text-xs uppercase tracking-[.08em] text-charcoal cursor-pointer hover:text-teal transition-colors"
             >
               {l.label}
             </a>
@@ -48,13 +48,13 @@ export default function Navbar() {
             href="https://app.mysorted.app"
             target="_blank"
             rel="noopener"
-            className="text-sm font-medium text-charcoal cursor-pointer hover:text-teal transition-colors"
+            className="font-mono text-xs uppercase tracking-[.08em] text-charcoal cursor-pointer hover:text-teal transition-colors"
           >
             Sign in
           </a>
           <Link
             href="/#download"
-            className="inline-flex items-center cursor-pointer rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-white shadow-md shadow-amber/25 hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] transition-all"
+            className="inline-flex items-center cursor-pointer rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-night shadow-md shadow-amber/25 hover:bg-amber/90 hover:scale-[1.02] active:scale-[0.98] transition-all"
           >
             Get Sorted
           </Link>
@@ -103,7 +103,7 @@ export default function Navbar() {
           <Link
             href="/#download"
             onClick={() => setOpen(false)}
-            className="mt-2 block text-center rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-white"
+            className="mt-2 block text-center rounded-xl bg-amber px-5 py-2.5 text-sm font-bold text-night"
           >
             Get Sorted
           </Link>

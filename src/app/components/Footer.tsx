@@ -6,7 +6,7 @@ const COMPANY_NUMBER = process.env.NEXT_PUBLIC_COMPANY_NUMBER ?? "";
 
 export default function Footer() {
   return (
-    <footer className="bg-charcoal text-smoke">
+    <footer className="bg-charcoal text-line">
       <div className="max-w-6xl mx-auto px-5 py-10 grid gap-8 md:grid-cols-[auto_1fr_auto] md:items-start text-sm">
         {/* Left — brand */}
         <div className="flex items-center gap-2.5">
@@ -50,7 +50,7 @@ export default function Footer() {
               support@mysorted.app
             </a>
           </nav>
-          <p className="text-smoke/60 text-xs leading-relaxed max-w-md">
+          <p className="text-line text-xs leading-relaxed max-w-md">
             &copy; 2026 MySorted Ltd
             {COMPANY_NUMBER && <> · Company No. {COMPANY_NUMBER}</>}
             {REGISTERED_OFFICE && <> · Registered office: {REGISTERED_OFFICE}</>}
