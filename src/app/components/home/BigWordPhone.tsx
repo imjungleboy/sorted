@@ -23,8 +23,17 @@ function useLoopVideo() {
   useEffect(() => {
     const v = ref.current;
     if (!v) return;
+    // No autoPlay on the video, so it never moves for people who've asked
+    // for reduced motion; they see the poster. Everyone else gets play() once
+    // the page is up. Muted + playsInline let iOS Safari start it without a tap.
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
-    const apply = () => (mq.matches ? v.pause() : v.play().catch(() => {}));
+    const apply = () => {
+      if (mq.matches) v.pause();
+      else {
+        v.muted = true;
+        v.play().catch(() => {});
+      }
+    };
     apply();
     mq.addEventListener("change", apply);
     return () => mq.removeEventListener("change", apply);
@@ -47,7 +56,6 @@ function Phone({ width }: { width: number }) {
         ref={video}
         className="absolute inset-x-0 bottom-[70px] w-full"
         style={{ maskImage: "linear-gradient(to bottom, transparent 0%, #000 18%, #000 88%, transparent 100%)", WebkitMaskImage: "linear-gradient(to bottom, transparent 0%, #000 18%, #000 88%, transparent 100%)" }}
-        autoPlay
         muted
         loop
         playsInline
