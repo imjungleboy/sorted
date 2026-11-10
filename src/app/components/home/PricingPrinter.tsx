@@ -221,7 +221,7 @@ export default function PricingPrinter({ monthlyPrice, trialDays, appStoreUrl }:
           <dl className="mt-2 grid w-full gap-3 text-sm">
             <div className="rounded-2xl border border-line bg-white p-4">
               <dt className="font-mono text-xs tracking-widest text-smoke">FREE · £0 FOREVER</dt>
-              <dd className="mt-1 text-charcoal">No card needed. Hard monthly caps.</dd>
+              <dd className="mt-1 text-charcoal">30 receipts, 3 invoices and 10 trips a month. No card needed.</dd>
             </div>
             <div className="rounded-2xl border-2 border-teal bg-white p-4">
               <dt className="font-mono text-xs tracking-widest text-teal">SORTED PRO · {monthlyPrice}/MONTH</dt>
