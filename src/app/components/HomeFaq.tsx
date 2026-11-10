@@ -56,7 +56,7 @@ export default function HomeFaq() {
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <div className="max-w-3xl mx-auto px-5">
-        <h2 className="font-[family-name:var(--font-nunito)] text-3xl md:text-4xl font-bold text-forest text-center">
+        <h2 className="font-display text-5xl uppercase leading-[.92] md:text-[72px] text-forest text-center">
           Questions sole traders ask
         </h2>
         <div className="mt-10 space-y-3">

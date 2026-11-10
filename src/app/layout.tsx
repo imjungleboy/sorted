@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Nunito, Inter } from "next/font/google";
+import { Nunito, Inter, Anton, JetBrains_Mono, Caveat } from "next/font/google";
 import "./globals.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
@@ -8,7 +8,27 @@ import { Analytics } from "@vercel/analytics/next";
 const nunito = Nunito({
   variable: "--font-nunito",
   subsets: ["latin"],
-  weight: ["400", "600", "700", "800"],
+  weight: ["400", "600", "700", "800", "900"],
+});
+
+// Display face for the big words, mono for the bracket labels, and the
+// handwriting on the pricing receipt.
+const anton = Anton({
+  variable: "--font-anton",
+  subsets: ["latin"],
+  weight: "400",
+});
+
+const jetbrains = JetBrains_Mono({
+  variable: "--font-jetbrains",
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+});
+
+const caveat = Caveat({
+  variable: "--font-caveat",
+  subsets: ["latin"],
+  weight: "700",
 });
 
 const inter = Inter({
@@ -44,7 +64,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${nunito.variable} ${inter.variable} h-full`}>
+    <html lang="en" className={`${nunito.variable} ${inter.variable} ${anton.variable} ${jetbrains.variable} ${caveat.variable} h-full`}>
       <body className="min-h-full flex flex-col antialiased">
         <Navbar />
         <main className="flex-1">{children}</main>

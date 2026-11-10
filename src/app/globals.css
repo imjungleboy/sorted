@@ -1,18 +1,30 @@
 @import "tailwindcss";
 
+/* Brand palette, from the app's constants/colors.ts. Token names are kept
+   from the old site so every page picks up the new values. */
 @theme inline {
-  --color-cloud: #EFF8F0;
-  --color-teal: #3A9E8F;
-  --color-forest: #2D6B5E;
-  --color-charcoal: #2C3E50;
-  --color-mint: #D4EDDA;
-  --color-amber: #E8913A;
-  --color-gold: #F5C542;
-  --color-cream: #F5D5A8;
-  --color-coral: #E05252;
-  --color-smoke: #8C9DAF;
+  --color-cloud: #FAFBFC;     /* Paper White: page background */
+  --color-teal: #2D7D6F;      /* Hedgie Teal */
+  --color-forest: #1A5C50;    /* Deep Forest: headings, primary buttons */
+  --color-charcoal: #2C3E50;  /* Charcoal: body text, footer */
+  --color-mint: #E8F5EE;      /* Fresh Mint: alternate sections */
+  --color-sage: #B8DDD0;      /* Soft Sage */
+  --color-amber: #F5A623;     /* Golden Amber: main CTA, dark text on it */
+  --color-gold: #FFD54F;      /* Coin Gold */
+  --color-cream: #FDEBD0;     /* Hedgie Cream */
+  --color-warm: #FFF8F0;      /* Warm Cream: text on dark */
+  --color-coral: #E57373;     /* Soft Coral */
+  --color-smoke: #4A5A68;     /* Muted text. Warm Grey #8C9BAA fails contrast as text */
+  --color-line: #C8D1DA;      /* Light Grey: rules and borders */
+  --color-paper: #FBFAF6;     /* Receipt paper */
+  --color-night: #0F1A1E;     /* Night: dark sections */
+  --color-surface: #1A2C30;   /* Dark Surface */
+  --color-elevated: #243B40;  /* Dark Elevated */
   --font-sans: var(--font-nunito);
   --font-body: var(--font-inter);
+  --font-display: var(--font-anton);
+  --font-mono: var(--font-jetbrains);
+  --font-hand: var(--font-caveat);
 }
 
 html {
@@ -194,4 +206,89 @@ body {
   border-radius: 0 1rem 1rem 0;
   padding: 1rem 1.25rem;
   margin: 0 0 1.5rem;
+}
+
+/* ─── Homepage redesign ─── */
+
+/* Torn receipt edge, top and bottom */
+.torn {
+  clip-path: polygon(0 5px,5% 0,10% 5px,15% 0,20% 5px,25% 0,30% 5px,35% 0,40% 5px,45% 0,50% 5px,55% 0,60% 5px,65% 0,70% 5px,75% 0,80% 5px,85% 0,90% 5px,95% 0,100% 5px,100% calc(100% - 5px),95% 100%,90% calc(100% - 5px),85% 100%,80% calc(100% - 5px),75% 100%,70% calc(100% - 5px),65% 100%,60% calc(100% - 5px),55% 100%,50% calc(100% - 5px),45% 100%,40% calc(100% - 5px),35% 100%,30% calc(100% - 5px),25% 100%,20% calc(100% - 5px),15% 100%,10% calc(100% - 5px),5% 100%,0 calc(100% - 5px));
+}
+/* Zig-zag bottom of a printed receipt */
+.receipt-edge {
+  height: 10px;
+  background: conic-gradient(from -45deg at bottom, var(--color-paper) 90deg, transparent 0) 50% / 16px 100%;
+}
+
+/* Hedgie scroll: scan light and line, replayed on each step by swapping A/B */
+@keyframes beam { 0% { opacity: 0 } 15% { opacity: 1 } 80% { opacity: .9 } 100% { opacity: .35 } }
+@keyframes beam-b { 0% { opacity: 0 } 15% { opacity: 1 } 80% { opacity: .9 } 100% { opacity: .35 } }
+@keyframes scan-sweep { 0% { top: 0; opacity: 0 } 10% { opacity: 1 } 90% { opacity: 1 } 100% { top: calc(100% - 3px); opacity: 0 } }
+@keyframes scan-sweep-b { 0% { top: 0; opacity: 0 } 10% { opacity: 1 } 90% { opacity: 1 } 100% { top: calc(100% - 3px); opacity: 0 } }
+.sweep-a .beam { animation: beam 1.4s ease-out both; }
+.sweep-b .beam { animation: beam-b 1.4s ease-out both; }
+.sweep-a .sweep-line { animation: scan-sweep 1.4s ease-in-out both; }
+.sweep-b .sweep-line { animation: scan-sweep-b 1.4s ease-in-out both; }
+
+/* Phone fan */
+@keyframes fan-out {
+  from { opacity: 0; transform: translate(0, 30px) rotate(0) scale(.9); }
+  25% { opacity: 1; }
+  to { opacity: 1; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s)); }
+}
+@keyframes fan-rise { from { opacity: 0; transform: translateY(140px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes scrap-in { from { opacity: 0; transform: scale(.5) rotate(var(--sr)); } to { opacity: 1; transform: scale(1) rotate(var(--sr)); } }
+.fan-out { animation: fan-out .7s cubic-bezier(.2,.9,.25,1) both; }
+.fan-rise { animation: fan-rise .8s cubic-bezier(.2,.9,.25,1) both; }
+.scrap-in { animation: scrap-in .35s cubic-bezier(.34,1.56,.64,1) both; }
+
+/* Tap and pop */
+@keyframes ring-pulse { 0% { transform: scale(1); opacity: .7 } 100% { transform: scale(1.35); opacity: 0 } }
+.ring-pulse { animation: ring-pulse 1.8s ease-out infinite; }
+
+/* Feature receipts lift on hover */
+.feat {
+  transform: rotate(var(--rot)) translateY(0);
+  transition: transform .3s cubic-bezier(.34,1.56,.64,1), filter .3s ease;
+  filter: drop-shadow(0 8px 14px rgb(15 26 30 / .12));
+}
+.feat:hover { transform: rotate(0deg) translateY(-8px) scale(1.03); filter: drop-shadow(0 18px 24px rgb(15 26 30 / .2)); }
+
+/* Pricing printer */
+.rc { transform-origin: 50% 0; }
+@keyframes feed { 0% { transform: translateY(-100%) } 70% { transform: translateY(-3%) } 86% { transform: translateY(1%) rotate(-.8deg) } 100% { transform: translateY(0) rotate(0) } }
+@keyframes feed-b { 0% { transform: translateY(-100%) } 70% { transform: translateY(-3%) } 86% { transform: translateY(1%) rotate(-.8deg) } 100% { transform: translateY(0) rotate(0) } }
+@keyframes tear-off { 0% { transform: translateY(0) rotate(0) } 20% { transform: translateY(14px) rotate(-2deg) } 100% { transform: translate(60px, 900px) rotate(22deg) } }
+@keyframes ring-draw { from { stroke-dashoffset: 1 } to { stroke-dashoffset: 0 } }
+@keyframes ring-draw-b { from { stroke-dashoffset: 1 } to { stroke-dashoffset: 0 } }
+@keyframes note-write { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes note-write-b { from { clip-path: inset(0 100% 0 0) } to { clip-path: inset(0 0 0 0) } }
+@keyframes stamp-down { 0% { opacity: 0; transform: scale(1.7) rotate(-16deg) } 70% { opacity: .9; transform: scale(.94) rotate(-12deg) } 100% { opacity: .85; transform: scale(1) rotate(-12deg) } }
+@keyframes stamp-down-b { 0% { opacity: 0; transform: scale(1.7) rotate(-16deg) } 70% { opacity: .9; transform: scale(.94) rotate(-12deg) } 100% { opacity: .85; transform: scale(1) rotate(-12deg) } }
+@keyframes lcd-flicker { 0% { opacity: .15 } 20% { opacity: 1 } 30% { opacity: .35 } 45% { opacity: 1 } 100% { opacity: 1 } }
+@keyframes lcd-flicker-b { 0% { opacity: .15 } 20% { opacity: 1 } 30% { opacity: .35 } 45% { opacity: 1 } 100% { opacity: 1 } }
+.feed-a { animation: feed 1.3s cubic-bezier(.25,.8,.3,1) both; }
+.feed-b { animation: feed-b 1.3s cubic-bezier(.25,.8,.3,1) both; }
+.tear-off { animation: tear-off .8s cubic-bezier(.5,0,.9,.6) forwards; }
+.feed-a .ring { animation: ring-draw .45s ease-out 1.35s both; }
+.feed-b .ring { animation: ring-draw-b .45s ease-out 1.35s both; }
+.feed-a .note { animation: note-write .7s ease-out 1.8s both; }
+.feed-b .note { animation: note-write-b .7s ease-out 1.8s both; }
+.feed-a .stamp { animation: stamp-down .28s ease-out 2.5s both; }
+.feed-b .stamp { animation: stamp-down-b .28s ease-out 2.5s both; }
+.lcd-a { animation: lcd-flicker .5s linear both; }
+.lcd-b { animation: lcd-flicker-b .5s linear both; }
+
+/* Hedgie wiggles while you hover the download badges */
+@keyframes point-wiggle { 0%, 100% { rotate: 0deg } 25% { rotate: -6deg } 75% { rotate: 5deg } }
+.group:hover .point-wiggle { animation: point-wiggle .9s ease-in-out infinite; }
+
+@media (prefers-reduced-motion: reduce) {
+  .sweep-a .beam, .sweep-b .beam, .sweep-a .sweep-line, .sweep-b .sweep-line,
+  .ring-pulse, .group:hover .point-wiggle { animation: none; }
+  .fan-out, .fan-rise, .scrap-in, .feed-a, .feed-b, .tear-off,
+  .feed-a .ring, .feed-b .ring, .feed-a .note, .feed-b .note, .feed-a .stamp, .feed-b .stamp {
+    animation-duration: .01s !important; animation-delay: 0s !important;
+  }
+  .feat, .feat:hover { transition: none; }
 }
