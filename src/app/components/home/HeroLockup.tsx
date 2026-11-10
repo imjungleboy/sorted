@@ -79,14 +79,14 @@ export default function HeroLockup() {
 
           {/* Line 1, with a line out to the right edge carrying Get Sorted */}
           <div className="relative">
-            <span aria-hidden className="fade-up absolute right-[calc(100%+20px)] top-1/2 hidden -translate-y-1/2 whitespace-nowrap font-mono text-xs leading-snug tracking-[.08em] text-charcoal md:block" style={{ animationDelay: `${tEnd}ms` }}>
+            <span aria-hidden className="fade-up absolute right-[calc(100%+20px)] top-1/2 hidden -translate-y-1/2 whitespace-nowrap font-mono text-xs leading-snug tracking-[.08em] text-charcoal lg:block" style={{ animationDelay: `${tEnd}ms` }}>
               ( SNAP IT )
             </span>
             <TypeOn text={LINES.first} start={t1} />
-            <span aria-hidden className="draw-x absolute left-[calc(100%+14px)] top-1/2 hidden h-0.5 w-[100vw] origin-left bg-forest md:block" style={{ animationDelay: `${t2 - 60}ms` }} />
+            <span aria-hidden className="draw-x absolute left-[calc(100%+14px)] top-1/2 hidden h-0.5 w-[100vw] origin-left bg-forest lg:block" style={{ animationDelay: `${t2 - 60}ms` }} />
             <a
               href="#download"
-              className="pop-in-soft absolute left-[calc(100%+min(14vw,220px))] top-1/2 hidden h-14 -translate-y-1/2 items-center whitespace-nowrap rounded-2xl bg-amber px-8 font-sans text-base font-black leading-none text-night hover:bg-amber/90 md:flex"
+              className="pop-in-soft absolute left-[calc(100%+min(14vw,220px))] top-1/2 hidden h-14 -translate-y-1/2 items-center whitespace-nowrap rounded-2xl bg-amber px-8 font-sans text-base font-black leading-none text-night hover:bg-amber/90 lg:flex"
               style={{ animationDelay: `${t2 + 180}ms` }}
             >
               Get Sorted
@@ -120,7 +120,7 @@ export default function HeroLockup() {
               </video>
             </div>
             <span aria-hidden className="pop-in-soft text-[1.3em] leading-[.8]" style={{ animationDelay: `${tPop + 50}ms` }}>)</span>
-            <span aria-hidden className="fade-up absolute left-[calc(100%+20px)] top-1/2 hidden -translate-y-1/2 whitespace-nowrap font-mono text-xs leading-snug tracking-[.08em] text-charcoal md:block" style={{ animationDelay: `${tEnd}ms` }}>
+            <span aria-hidden className="fade-up absolute left-[calc(100%+20px)] top-1/2 hidden -translate-y-1/2 whitespace-nowrap font-mono text-xs leading-snug tracking-[.08em] text-charcoal lg:block" style={{ animationDelay: `${tEnd}ms` }}>
               ( NOW LIVE ON
               <br />
               iOS + ANDROID )
@@ -129,12 +129,12 @@ export default function HeroLockup() {
 
           {/* Line 4, with a line in from the left edge carrying Sign in */}
           <div className="relative">
-            <span aria-hidden className="draw-x absolute right-[calc(100%+14px)] top-1/2 hidden h-0.5 w-[100vw] origin-right bg-forest md:block" style={{ animationDelay: `${t4}ms` }} />
+            <span aria-hidden className="draw-x absolute right-[calc(100%+14px)] top-1/2 hidden h-0.5 w-[100vw] origin-right bg-forest lg:block" style={{ animationDelay: `${t4}ms` }} />
             <a
               href="https://app.mysorted.app"
               target="_blank"
               rel="noopener"
-              className="pop-in-soft absolute right-[calc(100%+min(16vw,260px))] top-1/2 hidden h-14 -translate-y-1/2 items-center whitespace-nowrap rounded-2xl bg-forest px-8 font-sans text-base font-black leading-none text-warm hover:bg-forest/90 md:flex"
+              className="pop-in-soft absolute right-[calc(100%+min(16vw,260px))] top-1/2 hidden h-14 -translate-y-1/2 items-center whitespace-nowrap rounded-2xl bg-forest px-8 font-sans text-base font-black leading-none text-warm hover:bg-forest/90 lg:flex"
               style={{ animationDelay: `${t4 + 250}ms` }}
             >
               Sign in
@@ -162,7 +162,7 @@ export default function HeroLockup() {
                 <Image src="/images/google-play-badge.png" alt="Get it on Google Play" width={646} height={250} unoptimized loading="eager" className="-mx-1.5 h-[54px] w-auto" />
               </a>
             </div>
-            <a href="https://app.mysorted.app" target="_blank" rel="noopener" className="text-sm font-semibold text-forest underline-offset-2 hover:underline md:hidden">
+            <a href="https://app.mysorted.app" target="_blank" rel="noopener" className="text-sm font-semibold text-forest underline-offset-2 hover:underline lg:hidden">
               Already using Sorted? Sign in →
             </a>
           </div>
