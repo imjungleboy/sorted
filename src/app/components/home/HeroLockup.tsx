@@ -93,8 +93,9 @@ export default function HeroLockup() {
             </a>
           </div>
 
-          {/* Line 2, the one accent colour */}
-          <TypeOn text={LINES.second} start={t2} className="text-coral" />
+          {/* Line 2, the one accent colour. A shade darker than the brand
+              coral (#E57373, 2.88:1) so it passes 3:1 on the page: 3.25:1. */}
+          <TypeOn text={LINES.second} start={t2} className="text-[#E26464]" />
 
           {/* Line 3: *( Hedgie ) */}
           <div className="relative my-[.04em] flex items-center gap-[.08em]">
