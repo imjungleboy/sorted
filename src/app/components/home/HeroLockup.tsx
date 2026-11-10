@@ -45,14 +45,19 @@ function Ticker({ reverse = false }: { reverse?: boolean }) {
 export default function HeroLockup() {
   const video = useRef<HTMLVideoElement>(null);
 
-  // Respect reduced motion: show the still frame instead of the loop.
+  // The video has no autoPlay, so it never moves for people who've asked for
+  // reduced motion; they see the poster. Everyone else gets play() once the
+  // page is up. Muted + playsInline let iOS Safari start it without a tap.
   useEffect(() => {
     const v = video.current;
     if (!v) return;
     const mq = window.matchMedia("(prefers-reduced-motion: reduce)");
     const apply = () => {
       if (mq.matches) v.pause();
-      else v.play().catch(() => {});
+      else {
+        v.muted = true;
+        v.play().catch(() => {});
+      }
     };
     apply();
     mq.addEventListener("change", apply);
@@ -108,7 +113,6 @@ export default function HeroLockup() {
               <video
                 ref={video}
                 className="h-full w-full object-cover"
-                autoPlay
                 muted
                 loop
                 playsInline
