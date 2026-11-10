@@ -79,9 +79,9 @@ export default function TapPop() {
   const rx = -(m.y - 0.5) * 2 * TILT * 0.6;
 
   const scraps = [
-    { label: "FUEL", value: Math.round(EXAMPLE.fuel * k), cls: "bg-forest text-warm", size: "text-[58px]", pos: "left-[30px] top-[205px] w-[200px]", out: "translate3d(-120px,-40px,150px) rotate(-9deg) scale(1.12)" },
-    { label: "TOOLS", value: Math.round(EXAMPLE.tools * k), cls: "bg-paper text-forest", size: "text-[52px]", pos: "left-[110px] top-[345px] w-[190px]", out: "translate3d(130px,-10px,120px) rotate(7deg) scale(1.1)" },
-    { label: "PHONE", value: Math.round(EXAMPLE.phone * k), cls: "bg-sage text-forest", size: "text-[46px]", pos: "left-[40px] top-[480px] w-[170px]", out: "translate3d(-100px,90px,90px) rotate(-5deg) scale(1.08)" },
+    { label: "FUEL", value: Math.round(EXAMPLE.fuel * k), cls: "bg-forest text-warm", size: "text-[58px]", pos: "left-[30px] top-[205px] w-[200px]", out: "translate3d(-120px,-40px,150px) rotate(-3deg) scale(1.1)" },
+    { label: "TOOLS", value: Math.round(EXAMPLE.tools * k), cls: "bg-paper text-forest", size: "text-[52px]", pos: "left-[110px] top-[345px] w-[190px]", out: "translate3d(130px,-10px,120px) rotate(2deg) scale(1.08)" },
+    { label: "PHONE", value: Math.round(EXAMPLE.phone * k), cls: "bg-sage text-forest", size: "text-[46px]", pos: "left-[40px] top-[480px] w-[170px]", out: "translate3d(-100px,90px,90px) rotate(-2deg) scale(1.06)" },
   ];
 
   return (
@@ -165,7 +165,7 @@ export default function TapPop() {
                 {scraps.map((s) => (
                   <div
                     key={s.label}
-                    className={`absolute z-[6] ${s.pos}`}
+                    className={`pointer-events-none absolute z-[6] ${s.pos}`}
                     style={{ opacity: open ? 1 : 0, transform: popped ? s.out : FLAT, transition: "transform .6s cubic-bezier(.34,1.56,.64,1), opacity .35s ease" }}
                   >
                     <div className="drop-shadow-[0_12px_18px_rgb(15_26_30/.22)]">

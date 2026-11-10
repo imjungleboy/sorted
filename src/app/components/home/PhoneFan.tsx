@@ -10,8 +10,9 @@ import ScaledStage from "./ScaledStage";
 
 const screens = [
   { src: "/images/app-receipt-scan.webp", label: "Scan receipts", alt: "Sorted ‘Confirm Details’ screen on iPhone after scanning a Robert Dyas receipt, with merchant, amount of £25.97 and date filled in.", desc: "Snap a photo. Sorted reads the shop, date and amount, and picks a category." },
-  { src: "/images/app-dashboard.webp", label: "Dashboard", alt: "Sorted home dashboard on iPhone, showing an estimated self-employment tax of £4,209.18, quick actions for Scan, Invoice, Income, Mileage and P&L, and an income-by-source breakdown.", desc: "A live self-employed tax estimate from your income, expenses and mileage. An estimate to plan with." },
   { src: "/images/app-invoices.webp", label: "Invoices", alt: "Sorted Invoices screen on iPhone, showing £662.00 invoiced this tax year, £1.00 outstanding, and a list of sent and paid invoices.", desc: "Every invoice gets a payment link. When your client pays, Sorted marks it paid." },
+  // The middle phone: it rises first and is the one picked to start with.
+  { src: "/images/app-dashboard-2026.jpg", label: "Dashboard", alt: "Sorted home dashboard on iPhone for 2026/27, showing an estimated self-employment tax of £2,417.83, quick actions for Scan, Invoice, Income, Mileage and P&L, income, expenses and profit totals, and income by source.", desc: "A live self-employed tax estimate from your income, expenses and mileage. An estimate to plan with." },
   { src: "/images/app-pl-report.webp", label: "P&L report", alt: "Sorted P&L Report screen on iPhone, with tax-year selector, income of £3,212.00, expenses of £105.56, net profit, estimated tax owed, income by client, and a Generate PDF Report button.", desc: "Profit & loss any time, for the tax year you pick." },
   { src: "/images/app-accountant-pack.webp", label: "Accountant pack", alt: "Sorted Data & Export settings on iPhone, showing Generate P&L Report, Business Mileage Log, Tax Summary Report, Export All Data, and an Email to my accountant form for sending a tax pack.", desc: "On Pro, a tax summary PDF and one-tap accountant pack, emailed straight to your accountant." },
 ];
@@ -101,8 +102,8 @@ export default function PhoneFan() {
                         <div className={`overflow-hidden rounded-[36px] border-8 border-night bg-night ${on ? "shadow-[0_30px_50px_rgb(15_26_30/.32)]" : "shadow-[0_16px_30px_rgb(15_26_30/.2)]"}`}>
                           <Image src={s.src} alt={s.alt} width={600} height={1245} sizes="210px" className="block h-auto w-full" />
                         </div>
-                        <div className="scrap-in mx-auto mt-4 w-[176px] drop-shadow-[0_6px_10px_rgb(15_26_30/.14)]" style={{ "--sr": l.sr, animationDelay: `${1.6 + i * 0.08}s` } as React.CSSProperties}>
-                          <div className={`torn px-3 py-2.5 text-center font-mono text-xs font-bold tracking-wider ${on ? "bg-forest text-warm" : "bg-paper text-forest"}`}>
+                        <div className="scrap-in mx-auto mt-4 w-max drop-shadow-[0_6px_10px_rgb(15_26_30/.14)]" style={{ "--sr": l.sr, animationDelay: `${1.6 + i * 0.08}s` } as React.CSSProperties}>
+                          <div className={`torn whitespace-nowrap px-3 py-2.5 text-center font-mono text-xs font-bold tracking-wider ${on ? "bg-forest text-warm" : "bg-paper text-forest"}`}>
                             ( 0{i + 1} ) {s.label.toUpperCase()}
                           </div>
                         </div>

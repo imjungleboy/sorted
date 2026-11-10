@@ -210,9 +210,12 @@ body {
 
 /* ─── Homepage redesign ─── */
 
-/* Torn receipt edge, top and bottom */
+/* Label cards (were torn receipt edges): clean rounded rectangles with a
+   hairline edge, so every label and card on the page lines up tidily. The
+   class name is kept so existing markup picks this up. */
 .torn {
-  clip-path: polygon(0 5px,5% 0,10% 5px,15% 0,20% 5px,25% 0,30% 5px,35% 0,40% 5px,45% 0,50% 5px,55% 0,60% 5px,65% 0,70% 5px,75% 0,80% 5px,85% 0,90% 5px,95% 0,100% 5px,100% calc(100% - 5px),95% 100%,90% calc(100% - 5px),85% 100%,80% calc(100% - 5px),75% 100%,70% calc(100% - 5px),65% 100%,60% calc(100% - 5px),55% 100%,50% calc(100% - 5px),45% 100%,40% calc(100% - 5px),35% 100%,30% calc(100% - 5px),25% 100%,20% calc(100% - 5px),15% 100%,10% calc(100% - 5px),5% 100%,0 calc(100% - 5px));
+  border-radius: 14px;
+  box-shadow: inset 0 0 0 1px rgb(26 92 80 / .08);
 }
 /* Zig-zag bottom of a printed receipt */
 .receipt-edge {
@@ -237,7 +240,7 @@ body {
   to { opacity: 1; transform: translate(var(--x), var(--y)) rotate(var(--r)) scale(var(--s)); }
 }
 @keyframes fan-rise { from { opacity: 0; transform: translateY(140px); } to { opacity: 1; transform: translateY(0); } }
-@keyframes scrap-in { from { opacity: 0; transform: scale(.5) rotate(var(--sr)); } to { opacity: 1; transform: scale(1) rotate(var(--sr)); } }
+@keyframes scrap-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
 .fan-out { animation: fan-out .7s cubic-bezier(.2,.9,.25,1) both; }
 .fan-rise { animation: fan-rise .8s cubic-bezier(.2,.9,.25,1) both; }
 .scrap-in { animation: scrap-in .35s cubic-bezier(.34,1.56,.64,1) both; }
@@ -248,11 +251,11 @@ body {
 
 /* Feature receipts lift on hover */
 .feat {
-  transform: rotate(var(--rot)) translateY(0);
+  transform: translateY(0);
   transition: transform .3s cubic-bezier(.34,1.56,.64,1), filter .3s ease;
   filter: drop-shadow(0 8px 14px rgb(15 26 30 / .12));
 }
-.feat:hover { transform: rotate(0deg) translateY(-8px) scale(1.03); filter: drop-shadow(0 18px 24px rgb(15 26 30 / .2)); }
+.feat:hover { transform: translateY(-6px); filter: drop-shadow(0 18px 24px rgb(15 26 30 / .2)); }
 
 /* Pricing printer */
 .rc { transform-origin: 50% 0; }
@@ -292,3 +295,24 @@ body {
   }
   .feat, .feat:hover { transition: none; }
 }
+
+/* ─── Lockup hero ─── */
+@keyframes letter-in { from { opacity: 0 } to { opacity: 1 } }
+.letter-in { animation: letter-in .01s linear both; }
+@keyframes draw-x { from { transform: scaleX(0) } to { transform: scaleX(1) } }
+.draw-x { animation: draw-x .5s cubic-bezier(.2,.8,.2,1) both; }
+@keyframes pop-in-soft { from { opacity: 0; transform: scale(.4) } to { opacity: 1; transform: scale(1) } }
+.pop-in-soft { animation: pop-in-soft .4s cubic-bezier(.34,1.56,.64,1) both; }
+@keyframes fade-up { from { opacity: 0; transform: translateY(8px) } to { opacity: 1; transform: none } }
+.fade-up { animation: fade-up .45s ease-out both; }
+@keyframes ticker { from { transform: translateX(0) } to { transform: translateX(-50%) } }
+.ticker { animation: ticker 40s linear infinite; }
+.ticker-reverse { animation: ticker 40s linear infinite reverse; }
+@media (prefers-reduced-motion: reduce) {
+  .letter-in, .draw-x, .pop-in-soft, .fade-up { animation-duration: .01s !important; animation-delay: 0s !important; }
+  .ticker, .ticker-reverse { animation: none; }
+}
+@keyframes letter-flash { 0% { opacity: 0 } 1% { opacity: 1; color: #C8D1DA } 55% { color: #8C9BAA } 100% { opacity: 1 } }
+.is-in .letter-flash { animation: letter-flash .42s steps(1, end) both; }
+.letter-flash { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .letter-flash { opacity: 1; } .is-in .letter-flash { animation: none; } }

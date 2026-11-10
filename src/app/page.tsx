@@ -2,7 +2,8 @@ import Image from "next/image";
 import type { Metadata } from "next";
 import { getPricing } from "@/lib/pricing";
 import HomeFaq from "./components/HomeFaq";
-import HedgieScroll from "./components/home/HedgieScroll";
+import HeroLockup from "./components/home/HeroLockup";
+import BigWordPhone from "./components/home/BigWordPhone";
 import Features from "./components/home/Features";
 import PhoneFan from "./components/home/PhoneFan";
 import TapPop from "./components/home/TapPop";
@@ -57,8 +58,11 @@ export default async function Home() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(appSchema) }} />
 
-      {/* ─── HERO: Hedgie scroll ─── */}
-      <HedgieScroll />
+      {/* ─── HERO: word lockup with Hedgie's loop ─── */}
+      <HeroLockup />
+
+      {/* ─── BIG WORD + PHONE ─── */}
+      <BigWordPhone />
 
       {/* ─── FEATURES ─── */}
       <Features />
