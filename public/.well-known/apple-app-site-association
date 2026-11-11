@@ -9,6 +9,12 @@
           "/hmrc-callback-staging",
           "/hmrc-callback-dev"
         ]
+      },
+      {
+        "appID": "7Z3M72H4WV.app.mysorted.sorted.dev",
+        "paths": [
+          "/hmrc-callback-dev"
+        ]
       }
     ]
   }
