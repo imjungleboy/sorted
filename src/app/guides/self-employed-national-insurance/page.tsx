@@ -131,7 +131,7 @@ export default function SelfEmployedNationalInsurancePage() {
       <p>
         Class 4 is the part most sole traders actually pay. It works in bands,
         a bit like income tax. The first £12,570 of profit has no Class 4. You
-        pay 6% on the slice between £12,570 and £50,270, then 2% on anything
+        pay <mark>6% on the slice between £12,570 and £50,270</mark>, then 2% on anything
         above that.
       </p>
       <p>

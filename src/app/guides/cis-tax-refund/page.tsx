@@ -95,7 +95,7 @@ export default function CisTaxRefundPage() {
       ]}
     >
       <p>
-        A CIS tax refund is money HMRC pays back when the deductions taken
+        A CIS tax refund is <mark>money HMRC pays back</mark> when the deductions taken
         from your pay under the Construction Industry Scheme add up to more
         than the tax and National Insurance you actually owe. This guide is
         for sole-trader subcontractors. Limited companies claim a different

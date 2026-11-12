@@ -108,8 +108,8 @@ export default function SideHustleTaxPage() {
 
       <h2>How the £1,000 trading allowance works</h2>
       <p>
-        The trading allowance makes the first £1,000 of trading income
-        tax-free. Above that, you choose one of two ways to work out your
+        The trading allowance makes <mark>the first £1,000 of trading income
+        tax-free</mark>. Above that, you choose one of two ways to work out your
         taxable profit:
       </p>
       <ul>

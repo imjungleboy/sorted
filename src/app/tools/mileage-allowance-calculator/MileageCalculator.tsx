@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import NumberSlider from "../../components/tools/NumberSlider";
+import AnimatedNumber from "../../components/tools/AnimatedNumber";
 
 // HMRC simplified expenses for the self-employed.
 // Source: gov.uk/simpler-income-tax-simplified-expenses/vehicles
@@ -50,7 +52,7 @@ export default function MileageCalculator() {
 
   return (
     <div className="rounded-2xl bg-white border border-forest/5 shadow-sm p-6 md:p-8 mb-10">
-      <div className="grid gap-5 md:grid-cols-3">
+      <div className="grid gap-5 md:grid-cols-2">
         <label className="block">
           <span className="block text-sm font-semibold text-forest mb-2">Tax year</span>
           <select
@@ -73,17 +75,20 @@ export default function MileageCalculator() {
             <option value="motorcycle">Motorcycle</option>
           </select>
         </label>
-        <label className="block">
-          <span className="block text-sm font-semibold text-forest mb-2">Business miles</span>
-          <input
-            className={field}
-            inputMode="numeric"
-            placeholder="e.g. 6,500"
-            value={milesText}
-            onChange={(e) => setMilesText(e.target.value.replace(/[^\d,]/g, ""))}
-            aria-describedby="miles-help"
-          />
-        </label>
+      </div>
+      <div className="mt-6">
+        <NumberSlider
+          label="Business miles"
+          text={milesText}
+          onText={setMilesText}
+          max={20000}
+          step={100}
+          nudge={10}
+          suffix=" miles"
+          placeholder="e.g. 6,500"
+          marks={vehicle === "car" ? [{ at: CAR_FIRST_BAND_MILES, label: "25p after" }] : []}
+          describedBy="miles-help"
+        />
       </div>
       <p id="miles-help" className="mt-3 text-sm text-smoke">
         Business miles only, for the whole tax year (6 April to 5 April). For
@@ -93,7 +98,7 @@ export default function MileageCalculator() {
       <div className="mt-6 rounded-xl bg-mint/60 p-5" aria-live="polite">
         <p className="text-sm text-forest font-semibold">Your mileage claim</p>
         <p className="font-[family-name:var(--font-nunito)] text-4xl font-bold text-forest mt-1">
-          {gbp(claim.totalPounds)}
+          <AnimatedNumber value={claim.totalPounds} format={gbp} />
         </p>
         {claim.lines.length > 0 && (
           <ul className="mt-2 text-sm text-charcoal/80">
