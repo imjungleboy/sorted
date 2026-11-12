@@ -316,3 +316,72 @@ body {
 .is-in .letter-flash { animation: letter-flash .42s steps(1, end) both; }
 .letter-flash { opacity: 0; }
 @media (prefers-reduced-motion: reduce) { .letter-flash { opacity: 1; } .is-in .letter-flash { animation: none; } }
+
+/* ─── Motion patterns from motion-prompt (names and timings, rebuilt here) ─── */
+
+/* #164 Countdown timer: a changed digit rolls in from below */
+@keyframes digit-in { from { transform: translateY(100%); opacity: 0 } to { transform: none; opacity: 1 } }
+.digit-roll > span { animation: digit-in .3s cubic-bezier(.2,.8,.2,1) both; }
+
+/* #080 Highlighter: a sage stroke drawn left to right under a key figure */
+.guide-body mark {
+  color: inherit;
+  background: linear-gradient(transparent 58%, rgb(184 221 208 / .95) 58%, rgb(184 221 208 / .95) 92%, transparent 92%) no-repeat 0 0 / 0% 100%;
+  transition: background-size .8s cubic-bezier(.3,.7,.3,1);
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  padding: 0 .1em;
+}
+.guide-body mark.is-on { background-size: 100% 100%; }
+.guide-body h2 { scroll-margin-top: 6.5rem; }
+
+/* #163 Hotspots: pulsing dots that open a short note */
+@keyframes hotspot-ring { 0% { transform: scale(1); opacity: .6 } 100% { transform: scale(2.4); opacity: 0 } }
+.hotspot-ring { animation: hotspot-ring 1.6s ease-out infinite; }
+@keyframes note-pop { from { opacity: 0; transform: translateY(4px) scale(.96) } to { opacity: 1; transform: none } }
+.note-pop { animation: note-pop .25s cubic-bezier(.2,.8,.2,1) both; }
+
+/* #062 Range slider and #063 stepper */
+.range {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 28px;
+  background: transparent;
+  cursor: pointer;
+}
+.range::-webkit-slider-runnable-track {
+  height: 6px;
+  border-radius: 999px;
+  background: linear-gradient(to right, var(--color-teal) var(--fill, 0%), var(--color-mint) var(--fill, 0%));
+}
+.range::-moz-range-track { height: 6px; border-radius: 999px; background: var(--color-mint); }
+.range::-moz-range-progress { height: 6px; border-radius: 999px; background: var(--color-teal); }
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  margin-top: -9px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-forest);
+  box-shadow: 0 2px 6px rgb(15 26 30 / .2);
+  transition: transform .15s;
+}
+.range::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: #fff;
+  border: 3px solid var(--color-forest);
+}
+.range:active::-webkit-slider-thumb { transform: scale(1.15); }
+.range:focus-visible { outline: none; }
+.range:focus-visible::-webkit-slider-thumb { box-shadow: 0 0 0 4px rgb(45 125 111 / .3); }
+@keyframes num-pop { 0% { transform: scale(1) } 40% { transform: scale(1.08) } 100% { transform: scale(1) } }
+.num-pop { animation: num-pop .25s ease-out; }
+
+@media (prefers-reduced-motion: reduce) {
+  .digit-roll > span, .hotspot-ring, .note-pop, .num-pop { animation: none; }
+  .guide-body mark { transition: none; background-size: 100% 100%; }
+}

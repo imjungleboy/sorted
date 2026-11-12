@@ -79,7 +79,7 @@ export default function WorkingFromHomeAllowancePage() {
       <h2>HMRC&apos;s working from home allowance: the flat rates</h2>
       <p>
         The flat rate is part of HMRC&apos;s <strong>simplified expenses</strong>.
-        You count the hours you work at home each month and claim a set amount.
+        You count the hours you work at home each month and <mark>claim a set amount</mark>.
         You don&apos;t have to work out how much of each bill is personal and
         how much is business.
       </p>

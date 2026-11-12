@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import GuideLayout from "../../components/GuideLayout";
+import DeadlineCountdown from "../../components/DeadlineCountdown";
 
 const path = "/guides/self-assessment-deadline";
 const title = "Self Assessment deadline: 31 January 2027";
@@ -41,6 +42,7 @@ export default function SelfAssessmentDeadlinePage() {
       title={title}
       intro={intro}
       faqs={faqs}
+      lead={<DeadlineCountdown variant="card" />}
       sources={[
         {
           label: "gov.uk: Self Assessment tax returns — deadlines",
@@ -110,7 +112,7 @@ export default function SelfAssessmentDeadlinePage() {
       <h2>What happens if you miss the deadline?</h2>
       <h3>Filing late</h3>
       <ul>
-        <li>£100 penalty straight away, even if you owe no tax</li>
+        <li><mark>£100 penalty straight away</mark>, even if you owe no tax</li>
         <li>After 3 months: £10 a day, up to £900</li>
         <li>After 6 months: another 5% of the tax due or £300, whichever is more</li>
         <li>After 12 months: another 5% or £300, whichever is more</li>

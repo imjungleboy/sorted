@@ -79,7 +79,7 @@ export default function AllowableExpensesPage() {
     >
       <h2>The rule in one line</h2>
       <p>
-        You can claim costs you have{" "}<strong>only for your business</strong>.
+        You can claim costs you have{" "}<mark><strong>only for your business</strong></mark>.
         If something is used for business and personal life, like your phone,
         you can only claim the business share.
       </p>

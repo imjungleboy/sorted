@@ -177,7 +177,7 @@ export default function Sa302Page() {
         An SA302 is only as reliable as the return behind it. Keeping your
         income and expense records up to date through the year makes the
         return quicker to finish and easier to stand behind if a lender asks
-        questions. HMRC says to keep records for at least 5 years after the 31
+        questions. HMRC says to <mark>keep records for at least 5 years</mark> after the 31
         January deadline. For what you can and can&apos;t claim, see{" "}
         <Link href="/guides/sole-trader-allowable-expenses">
           the sole trader expenses list

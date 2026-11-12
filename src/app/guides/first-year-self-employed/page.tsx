@@ -227,7 +227,7 @@ export default function FirstYearSelfEmployedPage() {
         </table>
       </div>
       <p className="callout">
-        So a £3,000 tax bill means paying £4,500 in your first January. From
+        So a £3,000 tax bill means <mark>paying £4,500 in your first January</mark>. From
         then on the payments even out, but that first one is a lot to find if
         you haven&apos;t put money aside.
       </p>

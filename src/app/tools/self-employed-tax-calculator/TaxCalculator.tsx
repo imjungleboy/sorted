@@ -2,12 +2,13 @@
 
 import { useState } from "react";
 import { calculateSelfEmployedTax, type Region, type TaxYear } from "./taxEngine";
+import NumberSlider from "../../components/tools/NumberSlider";
+import AnimatedNumber from "../../components/tools/AnimatedNumber";
 
 const gbp = (n: number) =>
   n.toLocaleString("en-GB", { style: "currency", currency: "GBP", minimumFractionDigits: 2 });
 
 const toNumber = (s: string) => Number(s.replace(/,/g, ""));
-const onlyDigits = (s: string) => s.replace(/[^\d,]/g, "");
 
 export default function TaxCalculator() {
   const [taxYear, setTaxYear] = useState<TaxYear>("2026/27");
@@ -38,26 +39,26 @@ export default function TaxCalculator() {
             <option value="scotland">Scotland</option>
           </select>
         </label>
-        <label className="block">
-          <span className={label}>Self-employed income for the year (£)</span>
-          <input
-            className={field}
-            inputMode="numeric"
-            placeholder="e.g. 35,000"
-            value={income}
-            onChange={(e) => setIncome(onlyDigits(e.target.value))}
-          />
-        </label>
-        <label className="block">
-          <span className={label}>Allowable expenses (£)</span>
-          <input
-            className={field}
-            inputMode="numeric"
-            placeholder="e.g. 5,000"
-            value={expenses}
-            onChange={(e) => setExpenses(onlyDigits(e.target.value))}
-          />
-        </label>
+        <NumberSlider
+          label="Self-employed income for the year (£)"
+          text={income}
+          onText={setIncome}
+          max={150000}
+          step={500}
+          nudge={500}
+          prefix="£"
+          placeholder="e.g. 35,000"
+        />
+        <NumberSlider
+          label="Allowable expenses (£)"
+          text={expenses}
+          onText={setExpenses}
+          max={50000}
+          step={100}
+          nudge={100}
+          prefix="£"
+          placeholder="e.g. 5,000"
+        />
       </div>
       <p className="mt-3 text-sm text-smoke">
         For people whose only income is self-employment. A job, pension, rental
@@ -67,7 +68,7 @@ export default function TaxCalculator() {
       <div className="mt-6 rounded-xl bg-mint/60 p-5" aria-live="polite">
         <p className="text-sm text-forest font-semibold">Estimated tax and National Insurance</p>
         <p className="font-[family-name:var(--font-nunito)] text-4xl font-bold text-forest mt-1">
-          {gbp(r.total)}
+          <AnimatedNumber value={r.total} format={gbp} />
         </p>
         {r.profit > 0 && (
           <p className="text-sm text-charcoal/70 mt-1">

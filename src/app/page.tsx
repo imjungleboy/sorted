@@ -10,6 +10,7 @@ import TapPop from "./components/home/TapPop";
 import PricingPrinter from "./components/home/PricingPrinter";
 import GuidesTabs from "./components/home/GuidesTabs";
 import DownloadSignIn from "./components/home/DownloadSignIn";
+import DeadlineCountdown from "./components/DeadlineCountdown";
 
 export const metadata: Metadata = { alternates: { canonical: "/" } };
 
@@ -180,6 +181,9 @@ export default async function Home() {
           />
         </div>
       </section>
+
+      {/* ─── SELF ASSESSMENT COUNTDOWN ─── */}
+      <DeadlineCountdown />
 
       {/* ─── GUIDES ─── */}
       <GuidesTabs />
